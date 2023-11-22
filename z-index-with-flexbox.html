@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #cebfac;
+      }
+
+      .container {
+        display: flex;
+        background-color: aliceblue;
+        position: relative;
+      }
+
+      .item1 {
+        border: 1px solid red;
+      }
+
+      .item1:hover {
+        z-index: 2;
+        position: absolute;
+        border-radius: 5px;
+        background-color: teal;
+      }
+
+      .item2 {
+        border: 1px solid greenyellow;
+      }
+
+      .item2:hover {
+        z-index: 1;
+        position: absolute;
+        border-radius: 5px;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item1">ITEM WITH LOWER INDEX</div>
+      <div class="item2">ITEM WITH HIGHER INDEX</div>
+    </div>
+  </body>
+</html>

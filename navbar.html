@@ -10,7 +10,7 @@
       }
 
       html {
-        font-family: sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
       }
 
       body {
@@ -50,7 +50,11 @@
       }
 
       ul {
-        padding: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        min-height: 3.5vw;
+        padding-top: 0;
+        padding-bottom: 0;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         list-style-type: none;
@@ -62,6 +66,10 @@
       li {
         flex: auto;
         text-align: center;
+        min-height: 3.5vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       li:hover {
@@ -69,6 +77,9 @@
         color: blueviolet;
         opacity: 0.2;
         border-radius: 5px;
+        background: beige;
+        padding: 5px;
+        text-transform: capitalize;
       }
 
       /* https://www.w3schools.com/css/css_link.asp */
@@ -101,6 +112,11 @@
         align-items: center;
         justify-content: center;
         position: relative;
+      }
+
+      button,
+      input {
+        font: inherit;
       }
 
       /*
