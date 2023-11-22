@@ -42,12 +42,17 @@
         justify-content: end;
       }
 
+      /* https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator */
       .nav > * {
         flex-flow: wrap;
         flex: 1;
+        align-items: center;
       }
 
       ul {
+        padding: 0;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
         list-style-type: none;
         display: flex;
         align-items: center;
@@ -60,12 +65,13 @@
       }
 
       li:hover {
+        border-color: antiquewhite;
         color: blueviolet;
-        background-color: aqua;
-        opacity: 0.8;
+        opacity: 0.2;
         border-radius: 5px;
       }
 
+      /* https://www.w3schools.com/css/css_link.asp */
       a {
         text-decoration: none;
       }
@@ -82,7 +88,7 @@
 
       /* mouse over link */
       a:hover {
-        color: hotpink;
+        color: rgb(255, 0, 128);
       }
 
       /* selected link */
