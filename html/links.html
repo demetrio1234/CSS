@@ -11,13 +11,15 @@
     <style>
       form {
         position: relative;
+        display: flex;
       }
 
       img {
-        position: absolute;
-        left: 0;
-        height: 20px;
+        flex: 1;
+        height: 25px;
         opacity: 0.35;
+        max-width: 25px;
+        margin-right: 5px;
       }
 
       img:hover {
@@ -27,8 +29,31 @@
       }
 
       input {
-        position: absolute;
-        z-index: 0;
+        flex: 10;
+      }
+
+      table {
+        border-collapse: collapse; /* Collapse borders */
+        width: 100%; /* Full-width */
+        border: 1px solid #ddd; /* Add a grey border */
+        font-size: 18px; /* Increase font-size */
+      }
+
+      table th,
+      table td {
+        text-align: left; /* Left-align text */
+        padding: 12px; /* Add padding */
+      }
+
+      table tr {
+        /* Add a bottom border to all table rows */
+        border-bottom: 1px solid #ddd;
+      }
+
+      table tr.header,
+      table tr:hover {
+        /* Add a grey background color to the table header and on hover */
+        background-color: #f1f1f1;
       }
     </style>
   </head>
@@ -42,7 +67,7 @@
                 <a href="../index.html">Home</a>
               </li>
               <li>
-                <a href="">test</a>
+                <a href="#">Links</a>
               </li>
               <li>
                 <a href="">test</a>
@@ -53,12 +78,14 @@
             </ul>
           </div>
           <div class="nav">
-            <form action="filter()">
+            <form action="">
               <img src="../assets/search-static.png" alt="" />
               <input
                 type="text"
                 id="search"
                 placeholder="Nach etwas suchen..."
+                onkeyup="searchByArgument()"
+                on
               />
             </form>
           </div>
@@ -82,7 +109,7 @@
       </div>
 
       <div>
-        <table>
+        <table id="links-table">
           <tr>
             <th>Argument</th>
             <th>Link</th>
@@ -243,22 +270,118 @@
             <td>Transition - W3Schools CSS</td>
           </tr>
           <tr>
+            <td>CSS</td>
+            <td>
+              <a
+                href="https://www.w3schools.com/cssref/tryit.php?filename=trycss_display"
+                >https://www.w3schools.com/cssref/tryit.php?filename=trycss_display</a
+              >
+            </td>
+            <td>display</td>
+          </tr>
+          <tr>
+            <td>CSS</td>
+            <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/fit-content"
+              >https://developer.mozilla.org/en-US/docs/Web/CSS/fit-content</a></td>
+            <td>fit-content</td>
+          </tr>
+          <tr>
+            <td>JS</td>
+            <td><a href="https://stackoverflow.com/questions/2802055/what-does-the-construct-x-x-y-mean#:~:text=What%20is%20the%20double%20pipe%20operator%20(%7C%7C)%3F"
+              >https://stackoverflow.com/questions/2802055/what-does-the-construct-x-x-y-mean</a></td>
+            <td>Double pipe operator</td>
+          </tr>
+          <tr>
             <td></td>
-            <td></td>
+            <td><a href=""></a></td>
             <td></td>
           </tr>
           <tr>
             <td></td>
-            <td></td>
+            <td><a href=""></a></td>
             <td></td>
           </tr>
           <tr>
             <td></td>
+            <td><a href=""></a></td>
             <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><a href=""></a></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><a href=""></a></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><a href=""></a></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><a href=""></a></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><a href=""></a></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><a href=""></a></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><a href=""></a></td>
             <td></td>
           </tr>
         </table>
       </div>
+
+      <!--
+        TODO: convert image from jpg to png
+        TODO: find a way to integrate the form in the table or at least align these
+      <div>
+        <form action="">
+          <input type="text" style="flex: 1; max-width: 110px" />
+          <input type="text" style="flex: 20" />
+          <input type="text" style="flex: 20" />
+        </form>
+        <img class="add-item-image" src="../assets/add-item-image.png" alt="" />
+      </div>
     </main>
+      -->
+
+      <script>
+        function searchByArgument(){
+
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("search");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("links-table");
+          tr = table.getElementsByTagName("tr");
+
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+
+        }
+      </script>
+
   </body>
 </html>
