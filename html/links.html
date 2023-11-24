@@ -31,30 +31,6 @@
       input {
         flex: 10;
       }
-
-      table {
-        border-collapse: collapse; /* Collapse borders */
-        width: 100%; /* Full-width */
-        border: 1px solid #ddd; /* Add a grey border */
-        font-size: 18px; /* Increase font-size */
-      }
-
-      table th,
-      table td {
-        text-align: left; /* Left-align text */
-        padding: 12px; /* Add padding */
-      }
-
-      table tr {
-        /* Add a bottom border to all table rows */
-        border-bottom: 1px solid #ddd;
-      }
-
-      table tr.header,
-      table tr:hover {
-        /* Add a grey background color to the table header and on hover */
-        background-color: #f1f1f1;
-      }
     </style>
   </head>
   <body>
@@ -84,8 +60,7 @@
                 type="text"
                 id="search"
                 placeholder="Nach etwas suchen..."
-                onkeyup="searchByArgument()"
-                on
+                onkeyup="searchByArgumentLinkTopic()"
               />
             </form>
           </div>
@@ -281,45 +256,83 @@
           </tr>
           <tr>
             <td>CSS</td>
-            <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/fit-content"
-              >https://developer.mozilla.org/en-US/docs/Web/CSS/fit-content</a></td>
+            <td>
+              <a
+                href="https://developer.mozilla.org/en-US/docs/Web/CSS/fit-content"
+                >https://developer.mozilla.org/en-US/docs/Web/CSS/fit-content</a
+              >
+            </td>
             <td>fit-content</td>
           </tr>
           <tr>
             <td>JS</td>
-            <td><a href="https://stackoverflow.com/questions/2802055/what-does-the-construct-x-x-y-mean#:~:text=What%20is%20the%20double%20pipe%20operator%20(%7C%7C)%3F"
-              >https://stackoverflow.com/questions/2802055/what-does-the-construct-x-x-y-mean</a></td>
+            <td>
+              <a
+                href="https://stackoverflow.com/questions/2802055/what-does-the-construct-x-x-y-mean#:~:text=What%20is%20the%20double%20pipe%20operator%20(%7C%7C)%3F"
+                >https://stackoverflow.com/questions/2802055/what-does-the-construct-x-x-y-mean</a
+              >
+            </td>
             <td>Double pipe operator</td>
           </tr>
           <tr>
-            <td></td>
-            <td><a href=""></a></td>
-            <td></td>
+            <td>CSS</td>
+            <td>
+              <a
+                href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_without_z-index"
+                >https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_without_z-index</a
+              >
+            </td>
+            <td>Stacking without the z-index property</td>
           </tr>
           <tr>
-            <td></td>
-            <td><a href=""></a></td>
-            <td></td>
+            <td>CSS JS</td>
+            <td>
+              <a
+                href="https://www.w3schools.com/howto/howto_js_filter_table.asp"
+                >https://www.w3schools.com/howto/howto_js_filter_table.asp</a
+              >
+            </td>
+            <td>Create a filtered Table</td>
           </tr>
           <tr>
-            <td></td>
-            <td><a href=""></a></td>
-            <td></td>
+            <td>CSS JS</td>
+            <td>
+              <a
+                href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_table"
+                >https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_table</a
+              >
+            </td>
+            <td>W3Schools - Create a filtered Table - Try it</td>
           </tr>
           <tr>
-            <td></td>
-            <td><a href=""></a></td>
-            <td></td>
+            <td>CSS</td>
+            <td>
+              <a
+                href="https://www.geeksforgeeks.org/how-to-include-one-css-file-in-another/"
+                >https://www.geeksforgeeks.org/how-to-include-one-css-file-in-another/</a
+              >
+            </td>
+            <td>How to include one CSS file in another</td>
           </tr>
           <tr>
-            <td></td>
-            <td><a href=""></a></td>
-            <td></td>
+            <td>CSS</td>
+            <td>
+              <a
+                href="https://www.freecodecamp.org/news/html-page-width-height/"
+                >https://www.freecodecamp.org/news/html-page-width-height/</a
+              >
+            </td>
+            <td>Ideal Height Setting for a Full Responsive Page</td>
           </tr>
           <tr>
-            <td></td>
-            <td><a href=""></a></td>
-            <td></td>
+            <td>JS</td>
+            <td>
+              <a
+                href="https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp"
+                >https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp</a
+              >
+            </td>
+            <td>Trigger a Button Click on Enter</td>
           </tr>
           <tr>
             <td></td>
@@ -359,8 +372,7 @@
       -->
 
       <script>
-        function searchByArgument(){
-
+        function searchByArgumentLinkTopic() {
           var input, filter, table, tr, td, i, txtValue;
           input = document.getElementById("search");
           filter = input.value.toUpperCase();
@@ -369,19 +381,20 @@
 
           // Loop through all table rows, and hide those who don't match the search query
           for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-              txtValue = td.textContent || td.innerText;
-              if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
+            for (j = 0; j < 3; j++) {
+              td = tr[i].getElementsByTagName("td")[j];
+              if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter.toUpperCase()) > -1) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
               }
             }
           }
-
         }
       </script>
-
+    </main>
   </body>
 </html>

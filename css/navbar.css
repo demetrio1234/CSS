@@ -1,6 +1,7 @@
 @import "./html.css";
 
 .container {
+  min-height: 5vh;
   display: flex;
   flex: 1;
 }
@@ -16,17 +17,17 @@
 .nav:nth-of-type(1) {
   justify-content: start;
 }
-
+/*
 .nav:nth-of-type(2) {
 }
-
+*/
 .nav:nth-of-type(3) {
   justify-content: end;
 }
 
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator */
 .nav > * {
-  flex-flow: wrap;
+  /* flex-flow: wrap; */
   flex: 1;
   align-items: center;
 }
