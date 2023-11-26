@@ -68,6 +68,14 @@ li:hover {
   transition-duration: 250ms;
 }
 
+ul li,
+form input {
+  height: 15vh;
+  line-height: 15vh;
+  font-size: 10vh;
+  text-align: center;
+}
+
 /* https://www.w3schools.com/css/css_link.asp */
 a,
 a:link {
