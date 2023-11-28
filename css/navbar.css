@@ -32,6 +32,12 @@
   align-items: center;
 }
 
+div.nav:nth-child(2) > form:nth-child(1) {
+  min-height: 30px;
+  height: 35px;
+  max-height: 40px;
+}
+
 ul {
   margin-top: 0;
   margin-bottom: 0;
@@ -70,9 +76,8 @@ li:hover {
 
 ul li,
 form input {
-  height: 15vh;
-  line-height: 15vh;
-  font-size: 10vh;
+  max-height: 100%;
+  font-size: inherit;
   text-align: center;
 }
 

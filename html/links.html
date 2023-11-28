@@ -344,6 +344,122 @@
             </td>
             <td>Keeping text size the same on zooming</td>
           </tr>
+        </table>
+      </div>
+      <script>
+        function searchByArgumentLinkTopic() {
+          var input, filter, table, tr, td, i, txtValue, aTables;
+          input = document.getElementById("search");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("links-table");
+          tr = table.getElementsByTagName("tr");
+
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 1; i < tr.length; i++) {
+            for (j = 0; j < 3; j++) {
+              let content = "";
+              content = tr[i].getElementsByTagName("td")[0].innerText;
+              content += tr[i].getElementsByTagName("td")[1].innerText;
+              content += tr[i].getElementsByTagName("td")[2].innerText;
+
+              if (content) {
+                if (content.toUpperCase().indexOf(filter.toUpperCase()) > -1) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
+              }
+            }
+          }
+        }
+      </script>
+      <script>
+        var table = document.getElementById("links-table");
+
+        var data = {
+          links: [
+            {
+              categories: ["JS", "*"],
+              href: "https://www.w3schools.com/whatis/whatis_json.asp",
+              innerText: "https://www.w3schools.com/whatis/whatis_json.asp",
+              description: "What is JSON?",
+              summary: "",
+            },
+            {
+              categories: ["JS"],
+              href: "https://stackoverflow.com/questions/20180251/when-to-use-window-onload",
+              innerText:
+                "https://stackoverflow.com/questions/20180251/when-to-use-window-onload",
+              description: 'When to use "window.onload"?',
+              summary: "",
+            },
+            {
+              categories: ["JS"],
+              href: "https://stackoverflow.com/questions/1408289/how-can-i-do-string-interpolation-in-javascript",
+              innerText:
+                "https://stackoverflow.com/questions/1408289/how-can-i-do-string-interpolation-in-javascript",
+              description: "How can i do string interpolation in JavaScript?",
+              summary: "",
+            },
+            {
+              categories: ["JS", "JSON"],
+              href: "https://stackoverflow.com/questions/7081165/javascript-how-to-find-number-of-children-in-an-object",
+              innerText:
+                "https://stackoverflow.com/questions/7081165/javascript-how-to-find-number-of-children-in-an-object",
+              description: "How to find number of children in an object",
+              summary: "",
+            },
+
+            {
+              categories: [""],
+              href: "",
+              innerText: "",
+              description: "",
+              summary: "",
+            },
+
+            {
+              categories: [""],
+              href: "",
+              innerText: "",
+              description: "",
+              summary: "",
+            },
+          ],
+        };
+
+        for (let i = 0; i < Object.keys(data.links).length; i++) {
+          //Add a new row
+          var row = table.insertRow(-1);
+
+          //Add categories
+          let categories = { categories: "" };
+          for (let j = 0; j < data.links[i].categories.length; j++) {
+            categories.categories += data.links[i].categories[j].toString();
+            if (j < data.links[i].categories.length - 1) {
+              categories.categories += " /\r\n";
+            }
+          }
+          let cellArgument = row.insertCell(0);
+
+          cellArgument.innerText = categories.categories;
+
+          //Add link
+          let link = data.links[i].href;
+          let text = data.links[i].href;
+          let cellLink = row.insertCell(1);
+          cellLink.innerHTML = `<a href="${link}">${text}</a>`;
+
+          //Add description
+          let cellDescription = row.insertCell(2);
+          cellDescription.innerText = data.links[i].description;
+        }
+      </script>
+    </main>
+  </body>
+</html>
+
+<!--
           <tr>
             <td></td>
             <td><a href=""></a></td>
@@ -362,7 +478,7 @@
         </table>
       </div>
 
-      <!--
+      
         TODO: convert image from jpg to png
         TODO: find a way to integrate the form in the table or at least align these
       <div>
@@ -373,33 +489,4 @@
         </form>
         <img class="add-item-image" src="../assets/add-item-image.png" alt="" />
       </div>
-    </main>
       -->
-
-      <script>
-        function searchByArgumentLinkTopic() {
-          var input, filter, table, tr, td, i, txtValue;
-          input = document.getElementById("search");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("links-table");
-          tr = table.getElementsByTagName("tr");
-
-          // Loop through all table rows, and hide those who don't match the search query
-          for (i = 0; i < tr.length; i++) {
-            for (j = 0; j < 3; j++) {
-              td = tr[i].getElementsByTagName("td")[j];
-              if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter.toUpperCase()) > -1) {
-                  tr[i].style.display = "";
-                } else {
-                  tr[i].style.display = "none";
-                }
-              }
-            }
-          }
-        }
-      </script>
-    </main>
-  </body>
-</html>
