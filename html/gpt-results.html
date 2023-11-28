@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      code,
+      em {
+        display: inline;
+        background-color: rgba(0, 255, 255, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <h1>JS : How to pass data to an anchor element</h1>
+        <p>
+          If you want to insert an
+          <code>&#x3C;a&#x3E;&#x3C;/a&#x3E;</code> element using JavaScript, and
+          you need to pass also the href and the content of the element, you can
+          use the innerHTML property of the parent element and the template
+          literals feature of JavaScript. Template literals are strings that can
+          contain expressions and variables inside curly braces and are enclosed
+          by backticks. For example, if you have a variable called link that
+          contains the <em>href</em> value, and a variable called
+          <em>text</em> that contains the content of the element, you can use
+          the following code to insert the
+          <code>&#x3C;a&#x3E;&#x3C;/a&#x3E;</code> element:
+        </p>
+
+        <pre>
+            // Get the parent element where you want to insert the <code>&#x3C;a&#x3E;&#x3C;/a&#x3E;</code> element
+            <code>var parent = document.getElementById("parent");</code>
+            // Use innerHTML and template literals to insert the <code>&#x3C;a&#x3E;&#x3C;/a&#x3E;</code> element
+            <code>parent.innerHTML = &#x3C;a href="${link}"&#x3E; ${text} &#x3C;/a&#x3E;;</code></pre>
+        This code will create an
+        <code>&#x3C;a&#x3E;&#x3C;/a&#x3E;</code> element with the
+        <em>href</em> attribute set to the value of the <em>link</em> variable,
+        and the content set to the value of the text variable.
+      </section>
+    </div>
+  </body>
+</html>
