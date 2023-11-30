@@ -7,9 +7,11 @@ function showDropDownItems(){
     if(ddItemsShown === false){
         showArguments(dropDown);
         spanText.innerText = "Hide Arguments";
+        dropDown.style.display="block";
     }else{
         dropDown.innerHTML = '';
         spanText.innerText = "Show Arguments";
+        dropDown.style.display="none";
     }
 
     ddItemsShown = !ddItemsShown;

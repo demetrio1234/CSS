@@ -5,43 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      body {
-        background-color: #cebfac;
+      html {
+        height: 100vh;
       }
 
-      .container {
-        display: flex;
-        background-color: aliceblue;
+      body,
+      #section {
+        height: 100%;
+      }
+      #container-div {
+        height: fit-content;
+        width: fit-content;
         position: relative;
+        display: block;
       }
 
-      .item1 {
-        border: 1px solid red;
+      #button {
+        height: fit-content;
+        width: fit-content;
       }
 
-      .item1:hover {
-        z-index: 2;
+      #placeholder {
         position: absolute;
-        border-radius: 5px;
-        background-color: teal;
-      }
-
-      .item2 {
-        border: 1px solid greenyellow;
-      }
-
-      .item2:hover {
         z-index: 1;
-        position: absolute;
+        min-width: 80px;
+      }
+      #another-element {
+        background: red;
+        height: 100px;
+        width: 100px;
+        z-index: 0;
+      }
+
+      ul,
+      li {
+        width: fit-content;
+      }
+
+      ul {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(116, 101, 101, 0.74);
         border-radius: 5px;
-        background-color: aqua;
+        height: fit-content;
+        justify-content: center;
+        top: 100%;
+        transition: transform 0.15s, opacity 0.15s, visibility 0s linear 0.15s,
+          -webkit-transform 0.15s;
+        transform-origin: top right;
+        z-index: 100;
+        margin-top: 5px;
+        list-style: none;
+        padding: 5px;
+      }
+
+      li {
+        width: fit-content;
+        list-style: none;
+        display: flex;
+        justify-content: center;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="item1">ITEM WITH LOWER INDEX</div>
-      <div class="item2">ITEM WITH HIGHER INDEX</div>
-    </div>
+    <section id="section" class="container">
+      <div id="container-div">
+        <button id="button" onclick="showList()">Menu</button>
+        <div id="placeholder"></div>
+      </div>
+
+      <div id="another-element"></div>
+    </section>
+
+    <script>
+      function showList() {
+        let placeholder = document.getElementById("placeholder");
+
+        let menuShown = placeholder.innerHTML.length > 0;
+
+        if (menuShown === false) {
+          placeholder.innerHTML = `
+            <ul >
+              <li><a href="">1. Item</a></li>
+              <li><a href="">2. Item</a></li>
+              <li><a href="">3. Item</a></li>
+            </ul>`;
+        } else {
+          placeholder.innerHTML = ``;
+        }
+
+        console.log(list);
+      }
+    </script>
   </body>
 </html>

@@ -46,6 +46,8 @@
         justify-content: space-around;
         align-items: center;
         padding: 15px;
+        position: relative;
+        z-index: 100;
       }
 
       .dropDownSpan {
@@ -56,17 +58,29 @@
         cursor: pointer;
         padding: 2px 12px 3px 12px;
         text-decoration: none;
+        position: absolute;
       }
 
       #dropDownUl {
+        display: none;
         flex-direction: column;
         align-content: start;
         align-items: start;
         justify-content: start;
+        min-width: 150px;
+        z-index: 200;
+        position: absolute;
+        top: 45px;
+        left: 300px;
+        background-color: aquamarine;
+        border-radius: 5px;
       }
 
       .inserted-list-item {
-        min-width: 100%;
+        width: fit-content;
+        list-style: none;
+        display: flex;
+        justify-content: center;
       }
     </style>
   </head>
@@ -121,13 +135,6 @@
       </div>
       <div class="container" style="background-color: antiquewhite">
         <form class="addNewRowForm" action="" id="formNewLink">
-          <!--<div class="formSelect">
-            <label for="inputLink" style="flex: 1">Argument</label>
-            <select name="selectArgument" id="selectArgument" multiple>
-              <option value=""></option>
-            </select>
-          </div>
-        -->
           <div class="formInput" id="formCustomDropDown">
             <span
               id="dropDownSpan"

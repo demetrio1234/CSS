@@ -4,57 +4,242 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/favicon_io/favicon.ico"
+      type="image/x-icon"
+    />
 
-    <link rel="stylesheet" href="./css/navbar.css" />
+    <!-- <link rel="stylesheet" href="./css/navbar.css" /> -->
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      html {
+        height: 100vh;
+      }
+
+      body {
+        height: 100%;
+        background-color: cadetblue;
+        flex-direction: column;
+      }
+
+      main {
+        height: 85%;
+        background-color: chocolate;
+      }
+
+      body,
+      main,
+      .container,
+      .container div,
+      nav,
+      nav div,
+      ul,
+      li,
+      li a,
+      form {
+        display: flex;
+        flex: 1;
+        justify-content: space-around;
+      }
+
+      .container {
+        height: fit-content;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: bisque;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        position: relative;
+      }
+
+      nav {
+        height: 3vh;
+        max-height: 35px;
+        align-items: center;
+      }
+
+      .container:hover {
+        box-shadow: 2px 2px blue;
+        transition: 250ms;
+      }
+
+      li,
+      a {
+        text-decoration: none;
+      }
+
+      /* unvisited link */
+      a:link {
+        color: rgb(0, 0, 0);
+      }
+
+      /* visited link */
+      a:visited {
+        color: green;
+      }
+
+      /* mouse over link */
+      a:hover {
+        color: hotpink;
+        background-color: blue;
+        border-radius: 5px;
+        transition: 250ms;
+      }
+
+      /* selected link */
+      a:active {
+        color: blue;
+      }
+
+      form,
+      img {
+        max-height: 100%;
+      }
+
+      img {
+        max-height: 30px;
+        max-width: 30px;
+        flex: 1;
+      }
+
+      img:hover {
+        cursor: pointer;
+      }
+
+      input {
+        flex: 4;
+        border-radius: 5px;
+      }
+
+      input:hover {
+        border-color: aquamarine;
+        outline: none;
+        box-shadow: 0px 0px 0px #0066ff;
+        transition: 250ms;
+      }
+
+      /* Footer */
+
+      footer {
+        display: flex;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+        height: 15%;
+        background-color: black;
+        color: antiquewhite;
+        padding: 5px;
+      }
+      .footer-container,
+      .footer-container ul li a {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+      }
+
+      .footer-container ul li a {
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+
+      @media only screen and (max-width: 600px) {
+        main {
+          background-color: lightblue;
+        }
+      }
+
+      /* Footer */
+    </style>
   </head>
   <body>
     <main>
       <div class="container">
-        <nav class="nav">
-          <div class="nav">
-            <ul>
-              <li>
-                <a href="./index.html">Home</a>
-              </li>
-              <li>
-                <a href="./html/links.html">Links</a>
-              </li>
-              <li>
-                <a href="">test</a>
-              </li>
-              <li>
-                <a href="">test</a>
-              </li>
-            </ul>
-          </div>
-          <div class="nav">
-            <form action="filter()">
-              <label for="search">TEST</label>
-              <input
-                type="text"
-                id="search"
-                placeholder="Nach etwas suchen..."
-              />
-            </form>
-          </div>
-          <div class="nav">
-            <ul>
-              <li>
-                <a href="">test</a>
-              </li>
-              <li>
-                <a href="">test</a>
-              </li>
-              <li>
-                <a href="">test</a>
-              </li>
-              <li>
-                <a href="">test</a>
-              </li>
-            </ul>
-          </div>
+        <nav class="">
+          <ul>
+            <li>
+              <a href="./index.html">Home</a>
+            </li>
+            <li>
+              <a href="./html/links.html">Links</a>
+            </li>
+            <li>
+              <a href="./html/">test</a>
+            </li>
+            <li>
+              <a href="">test</a>
+            </li>
+          </ul>
+          <form action="filter()">
+            <img src="./assets/search-static.png" alt="" onclick="" />
+            <input type="text" id="search" placeholder="Nach etwas suchen..." />
+          </form>
+          <ul>
+            <li>
+              <a href="">test</a>
+            </li>
+            <li>
+              <a href="">test</a>
+            </li>
+            <li>
+              <a href="">test</a>
+            </li>
+            <li>
+              <a href="">test</a>
+            </li>
+          </ul>
         </nav>
       </div>
     </main>
+    <footer class="">
+      <section class="footer-container">
+        <ul>
+          <li><a href="">Home</a></li>
+        </ul>
+        <ul>
+          <li><a href="">Home</a></li>
+        </ul>
+        <ul>
+          <li><a href="">Home</a></li>
+        </ul>
+      </section>
+      <section class="footer-container">
+        <ul>
+          <li><a href="">Home</a></li>
+        </ul>
+        <ul>
+          <li><a href="">Home</a></li>
+        </ul>
+        <ul>
+          <li><a href="">Home</a></li>
+        </ul>
+      </section>
+      <section class="footer-container">
+        <ul>
+          <li><a href="">Home</a></li>
+        </ul>
+        <ul>
+          <li><a href="">Home</a></li>
+        </ul>
+        <ul>
+          <li><a href="">Home</a></li>
+        </ul>
+      </section>
+    </footer>
   </body>
 </html>
+
+<!--
+Momentary (Original Mix) - Tim Engelhardt
+
+For The Birds (Cassian Extended Remix) - Zola Blood
+-->
