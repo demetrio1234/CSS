@@ -17,13 +17,14 @@
   display: block;
 }
 
-.btn {
+.btn-span {
   background-color: rgba(32, 212, 32, 0.3);
   border-radius: 5px;
-  padding: 10px;
+  padding: 2px 12px 2px 12px;
+  height: fit-content;
 }
 
-.btn:hover {
+.btn-span:hover {
   background-color: rgba(32, 212, 32, 1);
   cursor: pointer;
   user-select: none;
@@ -33,4 +34,50 @@
 .inserted-list-item:hover label:hover {
   background-color: rgba(192, 160, 119, 0.5);
   color: black;
+}
+
+.dropDownSpan {
+  background-color: rgb(7, 55, 99);
+  border-radius: 5px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 2px 12px 2px 12px;
+  text-decoration: none;
+  position: absolute;
+}
+
+#dropDownUl {
+  display: none;
+  flex-direction: column;
+  align-content: start;
+  align-items: start;
+  justify-content: start;
+  min-width: 180px;
+  z-index: 200;
+  position: absolute;
+  top: 45px;
+  left: 300px;
+  background-color: aquamarine;
+  border-radius: 5px;
+}
+
+.inserted-list-item {
+  width: fit-content;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+ul li label {
+  text-align: end;
+  min-width: 125px;
+}
+
+.inserted-list-item:hover label:hover,
+li.inserted-list-item:hover,
+ul li:hover,
+ul li a:hover {
+  background-color: transparent;
+  opacity: 1;
 }
