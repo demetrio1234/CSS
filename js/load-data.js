@@ -50,31 +50,76 @@ var data = {
       summary: "",
     },
   ],
+  arguments : 
+    [
+        {
+            "id": 0,
+            "name": "HTML",
+            "description": ""
+        },
+        {
+            "id": 1,
+            "name": "CSS",
+            "description": ""
+        },
+        {
+            "id": 2,
+            "name": "JS",
+            "description": ""
+        },
+        {
+            "id": 3,
+            "name": "JSON",
+            "description": ""
+        }
+    ]
 };
 
-for (let i = 0; i < Object.keys(data.links).length; i++) {
-  //Add a new row
-  var row = table.insertRow(-1);
+if(data !== undefined){
 
-  //Add categories
-  let categories = { categories: "" };
-  for (let j = 0; j < data.links[i].categories.length; j++) {
-    categories.categories += data.links[i].categories[j].toString();
-    if (j < data.links[i].categories.length - 1) {
-      categories.categories += " /\r\n";
+  if(data.links){
+    for (let i = 0; i < Object.keys(data.links).length; i++) {
+      //Add a new row
+      var row = table.insertRow(-1);
+
+      //Add categories
+      let categories = { categories: "" };
+      for (let j = 0; j < data.links[i].categories.length; j++) {
+        categories.categories += data.links[i].categories[j].toString();
+        if (j < data.links[i].categories.length - 1) {
+          categories.categories += " /\r\n";
+        }
+      }
+      let cellArgument = row.insertCell(0);
+
+      cellArgument.innerText = categories.categories;
+
+      //Add link
+      let link = data.links[i].href;
+      let text = data.links[i].href;
+      let cellLink = row.insertCell(1);
+      cellLink.innerHTML = `<a href="${link}">${text}</a>`;
+
+      //Add description
+      let cellDescription = row.insertCell(2);
+      cellDescription.innerText = data.links[i].description;
     }
+
   }
-  let cellArgument = row.insertCell(0);
 
-  cellArgument.innerText = categories.categories;
+  let selectArguments = document.getElementById("selectArguments");
 
-  //Add link
-  let link = data.links[i].href;
-  let text = data.links[i].href;
-  let cellLink = row.insertCell(1);
-  cellLink.innerHTML = `<a href="${link}">${text}</a>`;
+  if(data.arguments && selectArguments !== null){
+    let arguments = document.getElementById("selectArgument");
 
-  //Add description
-  let cellDescription = row.insertCell(2);
-  cellDescription.innerText = data.links[i].description;
+    let argumentHTML = {"tag":""};
+
+    for(let x = 0; x < Object.keys(data.arguments).length; x++) {     
+      argumentHTML.tag += `<option value="${x}">${data.arguments[x].name}</option>`;
+    }
+
+    arguments.innerHTML = `${argumentHTML.tag}`;
+  }
+
+  var ddItemsShown = false;
 }

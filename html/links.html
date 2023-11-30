@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="../css/navbar.css" />
     <link rel="stylesheet" href="../css/table.css" />
+    <link rel="stylesheet" href="../css/custom-selectable-drop-down.css" />
 
     <style>
       form {
@@ -30,6 +31,42 @@
 
       input {
         flex: 10;
+      }
+
+      .addNewRowForm {
+        display: flex;
+        flex: 1;
+        justify-items: space-around;
+      }
+
+      .formSelect,
+      .formInput {
+        display: flex;
+        flex: 1;
+        justify-content: space-around;
+        align-items: center;
+        padding: 15px;
+      }
+
+      .dropDownSpan {
+        background-color: rgb(7, 55, 99);
+        border-radius: 5px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 2px 12px 3px 12px;
+        text-decoration: none;
+      }
+
+      #dropDownUl {
+        flex-direction: column;
+        align-content: start;
+        align-items: start;
+        justify-content: start;
+      }
+
+      .inserted-list-item {
+        min-width: 100%;
       }
     </style>
   </head>
@@ -82,7 +119,43 @@
           </div>
         </nav>
       </div>
+      <div class="container" style="background-color: antiquewhite">
+        <form class="addNewRowForm" action="" id="formNewLink">
+          <!--<div class="formSelect">
+            <label for="inputLink" style="flex: 1">Argument</label>
+            <select name="selectArgument" id="selectArgument" multiple>
+              <option value=""></option>
+            </select>
+          </div>
+        -->
+          <div class="formInput" id="formCustomDropDown">
+            <span
+              id="dropDownSpan"
+              class="dropDownSpan"
+              onclick="showDropDownItems()"
+              >Show Arguments</span
+            >
+            <ul class="container" id="dropDownUl"></ul>
+          </div>
 
+          <div class="formInput">
+            <div>
+              <label for="inputLink">Link</label>
+            </div>
+            <div>
+              <input type="text" id="inputLink" style="flex: 1" />
+            </div>
+          </div>
+          <div class="formInput">
+            <label for="inputTopic">Topic</label>
+            <input type="text" id="inputTopic" />
+          </div>
+          <div class="formInput">
+            <!-- <span class="btn" onclick="SubmitEvent">Add</span> -->
+            <span class="btn" onclick="addNewLink()">Add</span>
+          </div>
+        </form>
+      </div>
       <div>
         <table id="links-table">
           <tr>
@@ -346,40 +419,87 @@
           </tr>
         </table>
       </div>
-      <script src="../js/loadData.js"></script>
+      <script src="../js/load-data.js"></script>
       <script src="../js/search.js"></script>
+      <script src="../js/load-drop-down-items.js"></script>
+      <script>
+        function addNewLink() {
+          let formNewLink = document.getElementById("formNewLink");
+
+          if (formNewLink !== null) {
+            let table = document.getElementById("links-table");
+
+            if (table !== null) {
+              let formCustomDropDown =
+                document.getElementById("formCustomDropDown");
+
+              if (formCustomDropDown !== null) {
+                let dropDownUl = document.getElementById("dropDownUl");
+
+                if (dropDownUl !== null) {
+                  let customCheckbox =
+                    document.getElementsByClassName("custom-checkbox");
+
+                  if (customCheckbox !== null && customCheckbox.length > 0) {
+                    let arguments = [{ id: null, value: "" }];
+                    let index = { index: 0 };
+                    for (let i = 0; i < customCheckbox.length; i++) {
+                      if (customCheckbox[i].checked === true) {
+                        index.index++;
+
+                        arguments.push({
+                          id: index.index,
+                          value: customCheckbox[i].id,
+                        });
+                      }
+                    }
+                    arguments.splice(0, 1);
+                    //console.log(arguments);
+                    if (arguments.length > 0) {
+                      let inputLink = document.getElementById("inputLink");
+                      let inputTopic = document.getElementById("inputTopic");
+
+                      if (
+                        inputLink.value !== null &&
+                        inputLink.value.length > 0 &&
+                        inputTopic.value !== null &&
+                        inputTopic.value.length > 0
+                      ) {
+                        var row = table.insertRow(-1);
+
+                        //Add categories
+                        let categories = { categories: "" };
+                        for (let j = 0; j < arguments.length; j++) {
+                          categories.categories += arguments[j].value;
+                          if (j < arguments.length - 1) {
+                            categories.categories += " /\r\n";
+                          }
+                        }
+                        let cellArgument = row.insertCell(0);
+                        cellArgument.innerText = categories.categories;
+
+                        let cellLink = row.insertCell(1);
+                        cellLink.innerHTML = `<a href="${inputLink.value}">${inputLink.value}</a>`;
+
+                        let cellTopic = row.insertCell(2);
+                        cellTopic.innerText = inputTopic.value;
+
+                        //Reset inputForm
+                        for (let j = 0; j < customCheckbox.length; j++) {
+                          customCheckbox[j].checked = false;
+                        }
+
+                        inputLink.value = "";
+                        inputTopic.value = "";
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      </script>
     </main>
   </body>
 </html>
-
-<!--
-          <tr>
-            <td></td>
-            <td><a href=""></a></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><a href=""></a></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><a href=""></a></td>
-            <td></td>
-          </tr>
-        </table>
-      </div>
-
-      
-        TODO: convert image from jpg to png
-        TODO: find a way to integrate the form in the table or at least align these
-      <div>
-        <form action="">
-          <input type="text" style="flex: 1; max-width: 110px" />
-          <input type="text" style="flex: 20" />
-          <input type="text" style="flex: 20" />
-        </form>
-        <img class="add-item-image" src="../assets/add-item-image.png" alt="" />
-      </div>
-      -->
