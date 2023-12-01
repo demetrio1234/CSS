@@ -1,5 +1,7 @@
 function download() { //content, fileName, contentType
 
+    let fileName = "exported-links.json"
+
     let table = document.getElementById("links-table");
 
     let rows = table.getElementsByTagName("tr");
@@ -34,14 +36,12 @@ function download() { //content, fileName, contentType
         links.push(temp);
     }
 
+    links.shift();
     var jsonData = JSON.stringify(links);
-
-    console.log(jsonData);
-
     var a = document.createElement("a");
     var file = new Blob([jsonData], {type: "text/plain" });
     a.href = URL.createObjectURL(file);
-    a.download = "exported-links.json";
+    a.download = fileName;
     a.click();
 }
 

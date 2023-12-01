@@ -17,14 +17,17 @@ function showDropDownItems(){
     ddItemsShown = !ddItemsShown;
 }
 
-const showArguments = function (dropDown){
+const showArguments = async function (dropDown){
         //let customItems = [ { "index" : null , "name" : null},];
 
         let item = {"elements":""}
 
-        for(let i = 0; i < data.arguments.length ; i++){
+        const response = await fetch("../data/arguments.json");
+        const arguments = await response.json();
+
+        for(let i = 0; i < arguments.arguments.length ; i++){
             
-            let tempName = data.arguments[i].name;
+            let tempName = arguments.arguments[i].name;
     
             item.elements += `<li class="inserted-list-item">
                                 <input class="custom-checkbox" type="checkbox" name="${tempName}" id="${tempName}" />
