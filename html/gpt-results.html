@@ -41,5 +41,34 @@
         and the content set to the value of the text variable.
       </section>
     </div>
+    <div class="container">
+      <section>
+        <h1>Setting Transition Duration for Hover State in CSS</h1>
+        <p>
+          To set a duration for the return to the normal state (not hover) for
+          the given selector, you can adjust the transition property. Here's how
+          you can modify the CSS:
+        </p>
+        <pre>
+          li {
+            transition: border-bottom 250ms ease-in-out, background-color 250ms ease-in-out;
+          }
+          
+          li:hover {
+            border-bottom: 2px solid #4444dd;
+            background-color: aliceblue;
+          }
+        </pre>
+        <p>
+          In this modified CSS, the transition property is applied to the li
+          element itself, specifying the properties to transition and their
+          respective durations and easing functions. This ensures that when the
+          hover state is removed, the transition back to the normal state occurs
+          with the specified duration and easing. This approach allows you to
+          control the transition duration for the return to the normal state
+          after the hover effect is removed.
+        </p>
+      </section>
+    </div>
   </body>
 </html>
