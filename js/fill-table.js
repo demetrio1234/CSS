@@ -12,7 +12,7 @@ function fillTable(links) {
         for (let j = 0; j < links[i].categories.length; j++) {
           categories.categories += links[i].categories[j].toString();
           if (j < links[i].categories.length - 1) {
-            categories.categories += " /\r\n";
+            categories.categories += "/\r\n";
           }
         }
         let cellArgument = row.insertCell(0);
@@ -28,6 +28,10 @@ function fillTable(links) {
         //Add description
         let cellDescription = row.insertCell(2);
         cellDescription.innerText = links[i].description;
+
+        //Add Buttons
+        let cellButtons = row.insertCell(3);
+        cellButtons.innerHTML = `<div><span class="btn-span-green">Edit</span><span class="btn-span-red">Delete</span></div>`;
       }
     }
 

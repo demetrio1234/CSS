@@ -17,18 +17,37 @@
   display: block;
 }
 
-.btn-span {
-  background-color: rgba(32, 212, 32, 0.3);
+.btn-span, .btn-span-green, .btn-span-red{
   border-radius: 5px;
   padding: 2px 12px 2px 12px;
   height: fit-content;
 }
 
-.btn-span:hover {
-  background-color: rgba(32, 212, 32, 1);
+.btn-span{
+  background-color:rgba(128, 0, 128, 0.75);
+}
+.btn-span-green{
+  background-color: rgba(0, 255, 0, 0.5);
+}
+.btn-span-red{
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.btn-span:hover{
+  background-color:rgba(128, 0, 128, 1);
+}
+.btn-span-green:hover{
+  background-color: rgba(0, 255, 0, 1);
+}
+.btn-span-red:hover{
+  background-color: rgba(255, 0, 0, 1);
+}
+
+.btn-span:hover , .btn-span-green:hover, .btn-span-red:hover{
   cursor: pointer;
   user-select: none;
 }
+
 
 .inserted-list-item:hover,
 .inserted-list-item:hover label:hover {

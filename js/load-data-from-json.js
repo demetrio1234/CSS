@@ -4,3 +4,5 @@ async function loadTableData() {
 
   fillTable(links);
 }
+
+window.onload = loadTableData();
