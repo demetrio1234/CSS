@@ -1,41 +1,47 @@
-function showDropDownItems(){
+function showDropDownItems() {
+  var dropDown = document.getElementById("ddwn");
 
-    var dropDown = document.getElementById("dropDownUl");   
+  var spanText = document.getElementById("ddwnspn");
 
-    let spanText = document.getElementById("dropDownSpan");
-
-    if(ddItemsShown === false){
-        showArguments(dropDown);
-        spanText.innerText = "Hide Arguments";
-        dropDown.style.display="block";
-    }else{
-        dropDown.innerHTML = '';
-        spanText.innerText = "Show Arguments";
-        dropDown.style.display="none";
-    }
-
-    ddItemsShown = !ddItemsShown;
+  if (dropDown.innerHTML.length <= 0) {
+    showArguments(dropDown, spanText);
+  } else {
+    hideArguments(dropDown, spanText);
+  }
 }
 
-const showArguments = async function (dropDown){
-        //let customItems = [ { "index" : null , "name" : null},];
+const hideArguments = function (dropDown, spanText) {
+  document.getElementById("inserted-list-item").remove();
+  dropDown.innerHTML = "";
+  spanText.innerText = "Show Arguments";
+  dropDown.style.display = "none";
+};
 
-        let item = {"elements":""}
+const showArguments = async function (dropDown, spanText) {
+  let item = { elements: "" };
 
-        const response = await fetch("../data/arguments.json");
-        const arguments = await response.json();
+  const response = await fetch("../data/arguments.json");
+  const arguments = await response.json();
 
-        for(let i = 0; i < arguments.arguments.length ; i++){
-            
-            let tempName = arguments.arguments[i].name;
-    
-            item.elements += `<li class="inserted-list-item">
-                                <input class="custom-checkbox" type="checkbox" name="${tempName}" id="${tempName}" />
-                                <label for="${tempName}" class="" name="${tempName}" value="${tempName}">${tempName}</label>
-                            </li>`
-    
-            //customItems.push({index:i, name:item});
-        }
-    
-        dropDown.innerHTML = `${item.elements}`;
-}
+  for (let i = 0; i < arguments.arguments.length; i++) {
+    let tempName = arguments.arguments[i].name;
+
+    item.elements += `<li class="inserted-list-item" id="inserted-list-item">
+                        <input class="custom-checkbox" type="checkbox" name="${tempName}" id="${tempName}" style="left:50px"/>
+                        <label for="${tempName}" class="custom-label" name="${tempName}" value="${tempName}" style="left:50px">${tempName}</label>
+                      </li>`;
+  }
+
+  dropDown.innerHTML = `${item.elements}`;
+
+  spanText.innerText = "Hide Arguments";
+  dropDown.style.display = "block";
+
+  dropDown.style.top =
+    Math.ceil(spanText.getBoundingClientRect().y / 2).toString() + "px";
+  dropDown.style.left =
+    Math.ceil(spanText.getBoundingClientRect().x / 2).toString() + "px";
+};
+
+document.querySelector('[class="btn-square-powderblue"]').onclick =
+  showDropDownItems;

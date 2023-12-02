@@ -4,7 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="../css/html.css" />
+    <link rel="stylesheet" href="../css/updated-navbar.css" />
+
     <style>
+      pre,
+      code,
+      em {
+        font-family: "Courier New", Courier, monospace;
+      }
+
       code,
       em {
         display: inline;
@@ -13,8 +22,46 @@
     </style>
   </head>
   <body>
+    <header>
+      <nav class="">
+        <ul>
+          <li>
+            <a href="../index.html">Home</a>
+          </li>
+          <li>
+            <a href="./links.html">How To</a>
+          </li>
+          <li>
+            <a href="./gpt-results.html">GPT-Results</a>
+          </li>
+          <li>
+            <a href="">test</a>
+          </li>
+        </ul>
+        <form action="filter()">
+          <div>
+            <img src="../assets/search-static.png" alt="" onclick="" />
+            <input type="text" id="search" placeholder="Nach etwas suchen..." />
+          </div>
+        </form>
+        <ul>
+          <li>
+            <a href="./theory.html">Theory</a>
+          </li>
+          <li>
+            <a href="">test</a>
+          </li>
+          <li>
+            <a href="">test</a>
+          </li>
+          <li>
+            <a href="">test</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <div class="container">
-      <section>
+      <section class="container">
         <h1>JS : How to pass data to an anchor element</h1>
         <p>
           If you want to insert an
