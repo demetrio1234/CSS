@@ -1,48 +1,62 @@
-function download() { //content, fileName, contentType
+function saveToJson() {
+  let fileName = document.getElementById("frm-input-save").value;
+  if (fileName.length <= 0 || fileName === null) {
+    alert("Please enter a name to save the new json file.");
+    return;
+  }
 
-    let fileName = "exported-links.json"
+  let table = document.getElementById("links-table");
+  table = table === null ? document.getElementById("theory-table") : table;
 
-    let table = document.getElementById("links-table");
+  let rows = table.getElementsByTagName("tr");
+  if (rows.length <= 1) {
+    alert(
+      "Please enter at least a new item in the table to save a new json file."
+    );
+    return;
+  }
 
-    let rows = table.getElementsByTagName("tr");
+  let links = [
+    { categories: [], href: "", innerText: "", description: "", summary: "" },
+  ];
 
-    let links = [{"categories":[], "href": "",
-    "innerText": "",
-    "description": "",
-    "summary": ""}];
+  for (let i = 1; i < rows.length; i++) {
+    let categories = rows[i].cells[0].innerText.split("/");
 
-    for(let i = 1; i < rows.length ; i++){
-        
-        let categories = rows[i].cells[0].innerText.split("/");
+    //let countCategories = (categories.match("/") || []).length;
 
-        //let countCategories = (categories.match("/") || []).length;
+    let temp = {
+      categories: [],
+      href: "",
+      innerText: "",
+      description: "",
+      summary: "",
+    };
 
-        let temp = {categories:[], href:"",innerText:"",description:"",summary:""}
+    temp.categories = categories;
 
-        temp.categories = categories;
-
-        for(let j = 1; j < rows[i].cells.length ;j++ ){
-
-            if(j === 1){
-                temp.href = rows[i].cells[j].getElementsByTagName("a")[0].href;
-                temp.innerText = rows[i].cells[j].getElementsByTagName("a")[0].innerText;
-                
-            }else{
-                temp.description = rows[i].cells[j].innerText;
-            }
-            
-        }
-
-        links.push(temp);
+    for (let j = 1; j < rows[i].cells.length; j++) {
+      if (j === 1) {
+        temp.href = rows[i].cells[j].getElementsByTagName("a")[0].href;
+        temp.innerText =
+          rows[i].cells[j].getElementsByTagName("a")[0].innerText;
+      } else {
+        temp.description = rows[i].cells[j].innerText;
+      }
     }
 
-    links.shift();
-    var jsonData = JSON.stringify(links);
-    var a = document.createElement("a");
-    var file = new Blob([jsonData], {type: "text/plain" });
-    a.href = URL.createObjectURL(file);
-    a.download = fileName;
-    a.click();
+    links.push(temp);
+  }
+
+  links.shift();
+  var jsonData = JSON.stringify(links);
+  var a = document.createElement("a");
+  var file = new Blob([jsonData], { type: "text/plain" });
+  a.href = URL.createObjectURL(file);
+  a.download = fileName;
+  a.click();
+
+  document.getElementById("frm-input-save").value = "";
 }
 
 /*

@@ -145,12 +145,17 @@
         </table>
       </div>
       <div class="container" style="justify-content: center">
-        <div class="">
-          <span class="btn-span" onclick="download()">Save to JSON</span>
-        </div>
-        <div class="">
-          <span class="btn-span" onclick="logLinks()">Load from JSON</span>
-        </div>
+        <form class="frm" action="" id="frm-save">
+          <label for="frm-input-save"></label>
+          <input
+            class="frm-input"
+            type="text"
+            id="frm-input-save"
+            name="frm-input-save"
+          />
+          <span class="btn-span" id="btn-span-save">Save to JSON</span>
+          <span class="btn-span" id="btn-span-reload">Reload from JSON</span>
+        </form>
       </div>
       <script>
         var ddItemsShown = false;
@@ -158,7 +163,7 @@
       <script src="../js/fill-table.js"></script>
       <script src="../js/load-data-from-json.js"></script>
       <script>
-        window.onload = logLinks();
+        window.onload = loadTableData();
       </script>
       <script src="../js/search.js"></script>
       <script src="../js/load-drop-down-items.js"></script>
@@ -167,6 +172,7 @@
       <script src="../js/open-modal.js"></script>
       <script src="../js/using-the-fetch-api.js"></script>
       <script src="../js/add-new-link.js"></script>
+      <script src="../js/append-events.js"></script>
     </main>
   </body>
 </html>

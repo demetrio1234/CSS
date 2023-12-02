@@ -167,18 +167,33 @@
               <th>Argument</th>
               <th>Link</th>
               <th>Title</th>
+              <th></th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
           <tfoot id="tfoot"></tfoot>
         </table>
       </div>
+      <div class="container" style="justify-content: center">
+        <form class="frm" action="" id="frm-save">
+          <label for="frm-input-save"></label>
+          <input
+            class="frm-input"
+            type="text"
+            id="frm-input-save"
+            name="frm-input-save"
+          />
+          <span class="btn-span" id="btn-span-save">Save to JSON</span>
+          <span class="btn-span" id="btn-span-reload">Reload from JSON</span>
+        </form>
+      </div>
     </main>
     <footer></footer>
+    <script src="../js/save-to-json.js"></script>
     <script src="../js/load-theory-from-json.js"></script>
     <script src="../js/load-drop-down-items.js"></script>
     <script src="../js/add-new-link.js"></script>
     <script src="../js/barspace-clicked.js"></script>
-    <script src="../js/load-functions.js"></script>
+    <script src="../js/append-events.js"></script>
   </body>
 </html>

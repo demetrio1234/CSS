@@ -43,5 +43,8 @@ const showArguments = async function (dropDown, spanText) {
     Math.ceil(spanText.getBoundingClientRect().x / 2).toString() + "px";
 };
 
-document.querySelector('[class="btn-square-powderblue"]').onclick =
-  showDropDownItems;
+let btnDropDown = document.querySelector('[class="btn-square-powderblue"]');
+btnDropDown =
+  btnDropDown === null ? document.getElementById("ddwnspn") : btnDropDown;
+
+btnDropDown.onclick = showDropDownItems;
