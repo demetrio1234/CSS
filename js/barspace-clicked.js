@@ -1,10 +1,10 @@
 window.onkeydown = function (event) {
-  let btnSpan = document.getElementById("btnSpan");
+  let btnspn = document.getElementById("btn-span");
   let ddwnspn = document.getElementById("ddwnspn");
 
-  if (document.activeElement === btnSpan && event.keyCode === 32) {
+  if (document.activeElement === btnspn && event.keyCode === 32) {
     event.preventDefault();
-    btnSpan.click();
+    btnspn.click();
   } else if (document.activeElement === ddwnspn && event.keyCode === 32) {
     event.preventDefault();
     ddwnspn.click();

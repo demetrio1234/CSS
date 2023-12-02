@@ -1,11 +1,11 @@
 function addNewLink() {
-  let formNewLink = document.getElementById("formNewLink");
+  let formNewLink = document.getElementById("frm-new-link");
 
   if (formNewLink !== null) {
     let table = document.getElementById("links-table");
 
     if (table !== null) {
-      let formCustomDropDown = document.getElementById("formCustomDropDown");
+      let formCustomDropDown = document.getElementById("frm-custom-ddwn");
 
       if (formCustomDropDown !== null) {
         let ddwn = document.getElementById("ddwn");
@@ -30,8 +30,17 @@ function addNewLink() {
             arguments.splice(0, 1);
 
             if (arguments.length > 0) {
-              let inputLink = document.getElementById("inputLink");
-              let inputTopic = document.getElementById("inputTopic");
+              let inputLink = document.getElementById("input-link");
+              inputLink =
+                inputLink === null
+                  ? document.getElementById("theory-link")
+                  : inputLink;
+
+              let inputTopic = document.getElementById("input-topic");
+              inputTopic =
+                inputTopic === null
+                  ? document.getElementById("theory-title")
+                  : inputTopic;
 
               if (
                 inputLink.value !== null &&

@@ -134,9 +134,9 @@
     </header>
     <main>
       <div class="container container-frm">
-        <form action="" class="frm">
+        <form action="" class="frm" id="frm-new-link">
           <div class="frm-input">
-            <div class="relative-wrapper">
+            <div class="relative-wrapper" id="frm-custom-ddwn">
               <span class="btn-square-powderblue" id="ddwnspn"
                 >Show Arguments</span
               >
@@ -153,13 +153,15 @@
           </div>
           <div class="flex-wrapper">
             <div class="frm-input-btn">
-              <span class="btn-circle-green">&#43;</span>
+              <span class="btn-circle-green" id="btn-span" tabindex="0"
+                >&#43;</span
+              >
             </div>
           </div>
         </form>
       </div>
       <div class="container">
-        <table id="theory-table">
+        <table id="links-table">
           <thead id="thead">
             <tr>
               <th>Argument</th>
@@ -175,5 +177,8 @@
     <footer></footer>
     <script src="../js/load-theory-from-json.js"></script>
     <script src="../js/load-drop-down-items.js"></script>
+    <script src="../js/add-new-link.js"></script>
+    <script src="../js/barspace-clicked.js"></script>
+    <script src="../js/load-functions.js"></script>
   </body>
 </html>
