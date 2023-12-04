@@ -23,8 +23,6 @@ function saveToJson() {
   for (let i = 1; i < rows.length; i++) {
     let categories = rows[i].cells[0].innerText.split("/");
 
-    //let countCategories = (categories.match("/") || []).length;
-
     let temp = {
       categories: [],
       href: "",
@@ -35,7 +33,7 @@ function saveToJson() {
 
     temp.categories = categories;
 
-    for (let j = 1; j < rows[i].cells.length; j++) {
+    for (let j = 1; j < 3; j++) {
       if (j === 1) {
         temp.href = rows[i].cells[j].getElementsByTagName("a")[0].href;
         temp.innerText =

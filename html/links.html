@@ -8,11 +8,18 @@
     <link rel="stylesheet" href="../css/navbar.css" />
     <link rel="stylesheet" href="../css/table.css" />
     <link rel="stylesheet" href="../css/custom-selectable-drop-down.css" />
-
+    <link rel="stylesheet" href="../css/modal.css" />
     <style>
+      form,
+      form > * {
+        padding: 5px;
+      }
+
       form {
         position: relative;
         display: flex;
+        background-color: antiquewhite;
+        width: 85%;
       }
 
       img {
@@ -125,13 +132,8 @@
             <input type="text" id="input-topic" />
           </div>
           <div class="formInput">
-            <span
-              class="btn-span"
-              id="btn-span"
-              onclick="addNewLink()"
-              tabindex="0"
-              >Add</span
-            >
+            <span class="btn-span" id="btn-span" tabindex="0">Add</span
+            ><!-- TODO: addNewLink move to script-->
           </div>
         </form>
       </div>
@@ -162,19 +164,59 @@
           <span class="btn-span" id="btn-span-reload">Reload from JSON</span>
         </form>
       </div>
-      <script>
-        var ddItemsShown = false;
-      </script>
-      <script src="../js/fill-table.js"></script>
-      <script src="../js/load-data-from-json.js"></script>
-      <script src="../js/search.js"></script>
-      <script src="../js/load-drop-down-items.js"></script>
-      <script src="../js/barspace-clicked.js"></script>
-      <script src="../js/save-to-json.js"></script>
-      <script src="../js/open-modal.js"></script>
-      <script src="../js/using-the-fetch-api.js"></script>
-      <script src="../js/add-new-link.js"></script>
-      <script src="../js/append-events.js"></script>
     </main>
+    <div class="div-modal">
+      <section class="sctn-modal">
+        <div class="flex">
+          <button class="btn-close">⨉</button>
+        </div>
+        <h1 class="">Edit the row content</h1>
+        <form class="frm-modal" action="">
+          <span class="btn-span-modal">Arguments</span>
+
+          <div>
+            <label
+              class="frm-lbl-modal"
+              for="frm-input-modal-link"
+              id="frm-lbl-modal-link"
+              >Link</label
+            >
+            <input
+              class="frm-input-modal"
+              type="text"
+              id="frm-input-modal-link"
+            />
+          </div>
+          <div>
+            <label
+              class="frm-lbl-modal"
+              for="frm-input-modal-topic"
+              id="frm-lbl-modal-topic"
+              >Topic</label
+            >
+            <input
+              class="frm-input-modal"
+              type="text"
+              id="frm-input-modal-topic"
+            />
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <script>
+      var ddItemsShown = false;
+    </script>
+    <script src="../js/fill-table.js"></script>
+    <script src="../js/load-data-from-json.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/load-drop-down-items.js"></script>
+    <script src="../js/barspace-clicked.js"></script>
+    <script src="../js/save-to-json.js"></script>
+    <script src="../js/open-modal.js"></script>
+    <script src="../js/using-the-fetch-api.js"></script>
+    <script src="../js/add-new-link.js"></script>
+    <script src="../js/on-click-handler.js"></script>
+    <script src="../js/append-events.js"></script>
   </body>
 </html>
