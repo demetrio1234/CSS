@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/updated-navbar.css" />
+    <link rel="stylesheet" href="../css/custom-selectable-drop-down.css" />
+    <link rel="stylesheet" href="../css/modal.css" />
+    <style>
+      .div-modal {
+        top: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="nav" id="nav">
+        <ul class="nav-ul">
+          <li><a href="">A</a></li>
+          <li><a href="">B</a></li>
+          <li><a href="">C</a></li>
+          <li><a href="">D</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <span class="btn-span">Hide navigation menu</span>
+      <span class="btn-span-green">Edit form</span>
+      <span class="btn-span-red">Delete form</span>
+      <div class="div-modal" id="div-modal">
+        <form class="frm" id="frm" action="">
+          <label class="frm-lbl" id="frm-lbl-name" for="frm-input-name"
+            >Name</label
+          >
+          <input class="frm-input" id="frm-input-name" type="text" />
+          <span class="btn-span-save" id="frm-input-btn-span-save">Save</span>
+        </form>
+      </div>
+    </main>
+    <footer></footer>
+    <script src="../js/bubbling.js"></script>
+  </body>
+</html>

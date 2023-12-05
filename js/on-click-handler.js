@@ -6,25 +6,23 @@ function recursiveRowSearch(element) {
   return element;
 }
 
-function onClickHandler() {
-  const delSpans = document.getElementsByClassName("btn-span-red");
+function onClickHandler(event) {
+  const delSpans = document.querySelector("#div-btn-span-delete span");
 
-  for (let i = 0; i < delSpans.length; i++) {
-    delSpans[i].addEventListener("click", function (event) {
+  if (delSpans) {
+    delSpans.addEventListener("click", function (event) {
       var row = recursiveRowSearch(event.target);
       var list = row.parentElement;
       list.removeChild(row);
     });
   }
 
-  const editSpans = document.getElementsByClassName("btn-span-green");
+  const editSpans = document.querySelector("#div-btn-span-edit span");
 
-  for (let i = 0; i < editSpans.length; i++) {
-    editSpans[i].addEventListener("click", function (event) {
+  if (editSpans) {
+    editSpans.addEventListener("click", function (event) {
+      document.getElementById("div-modal").classList.remove("hidden");
       var row = recursiveRowSearch(event.target);
-      openModal(row);
     });
   }
 }
-
-window.onload = onClickHandler;

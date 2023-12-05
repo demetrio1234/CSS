@@ -40,10 +40,6 @@
   flex-direction: column;
 }
 
-.div-modal {
-  /* display: none; */
-}
-
 body {
   position: relative;
 }
@@ -68,4 +64,8 @@ body {
 .btn-close:hover {
   background-color: aliceblue;
   color: black;
+}
+
+.hidden {
+  display: none;
 }

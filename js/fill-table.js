@@ -31,7 +31,12 @@ function fillTable(links) {
 
         //Add Buttons
         let cellButtons = row.insertCell(3);
-        cellButtons.innerHTML = `<div><span class="btn-span-green">Edit</span><span class="btn-span-red">Delete</span></div>`;
+        cellButtons.innerHTML = `<div id="div-btn-span-edit">
+                                   <span class="btn-span-green">Edit</span>
+                                 </div>
+                                 <div id="div-btn-span-delete">
+                                   <span class="btn-span-red">Delete</span>
+                                 </div>`;
       }
     }
 
