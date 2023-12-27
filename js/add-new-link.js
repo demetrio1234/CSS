@@ -70,10 +70,8 @@ function addNewLink() {
                 let cellButtons = row.insertCell(3);
                 cellButtons.innerHTML = `<div><span class="btn-span-green">Edit</span><span class="btn-span-red">Delete</span></div>`;
 
-                //Reset inputForm
-                for (let j = 0; j < customCheckbox.length; j++) {
+                for (let j = 0; j < customCheckbox.length; j++)
                   customCheckbox[j].checked = false;
-                }
 
                 inputLink.value = "";
                 inputTopic.value = "";

@@ -8,23 +8,24 @@
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="../favicon_io/apple-touch-icon.png"
+      href=".../favicon_io/apple-touch-icon.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="../favicon_io/favicon-32x32.png"
+      href=".../favicon_io/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="../favicon_io/favicon-16x16.png"
+      href=".../favicon_io/favicon-16x16.png"
     />
-    <link rel="manifest" href="../favicon_io/site.webmanifest" />
+    <link rel="manifest" href=".../favicon_io/site.webmanifest" />
+
     <link rel="stylesheet" href="../css/navbar.css" />
-    <link rel="stylesheet" href="../css/table.css" />
+    <link rel="stylesheet" href="../css/dropdown-button-list.css" />
     <link rel="stylesheet" href="../css/image.css" />
   </head>
   <body>
@@ -46,12 +47,14 @@
               >
             </li>
             <li class="navbar__li">
-              <a class="a--underline-rebeccapurple" href="./how-to-s.html"
+              <a class="a--underline-rebeccapurple" href="../html/how-to-s.html"
                 >"How To"s</a
               >
             </li>
             <li class="navbar__li">
-              <a class="a--underline-rebeccapurple" href="./gpt-results.html"
+              <a
+                class="a--underline-rebeccapurple"
+                href="../html/gpt-results.html"
                 >Gpt-Results</a
               >
             </li>
@@ -72,12 +75,12 @@
           </form>
           <ul class="navbar__ul--horizontal">
             <li class="navbar__li">
-              <a class="a--underline-rebeccapurple" href="./tools.html"
+              <a class="a--underline-rebeccapurple" href="../html/tools.html"
                 >Tools</a
               >
             </li>
             <li class="navbar__li">
-              <a class="a--underline-rebeccapurple" href="./theory.html"
+              <a class="a--underline-rebeccapurple" href="../html/theory.html"
                 >Theory</a
               >
             </li>
@@ -89,29 +92,48 @@
       </div>
     </header>
     <main>
-      <div>
-        <section>
-          <table id="links-table">
+      <div class="--flex-row" id="dropdown__div--flex-row">
+        <div class="dropdown" id="dropdown__div">
+          <button
+            class="dropdown__button --bg-rebeccapurple --border-radius-5"
+            id="dropdown__button"
+            type="menu"
+          >
+            Menu
+            <i
+              class="arrow arrow__direction--righ arrow--aliceblue --rotate-down"
+              id="dropdown__arrow"
+            ></i>
+          </button>
+          <span id="dropdown__span" class="--border-radius-5 --width-100">
+            <ul
+              class="--flex-column --width-fit-content --margin-left-auto --margin-right-auto"
+              id="dropdown__ul"
+            ></ul>
+          </span>
+        </div>
+      </div>
+      <div class="table">
+        <table>
+          <thead>
             <tr>
-              <th>Argument</th>
-              <th>Link</th>
-              <th>Description</th>
+              <th>Arguments</th>
+              <th>Links</th>
+              <th>Descriptions</th>
+              <th>Timestamps</th>
             </tr>
+          </thead>
+          <tbody>
             <tr>
-              <td>HTML</td>
-              <td>
-                <a href="https://appdevtools.com/html-entity-encoder-decoder"
-                  >HTML Entity Encoder Decoder</a
-                >
-              </td>
-              <td>
-                A useful tool to prepare an html string to be passed to the a
-                code element
-              </td>
+              <td>a</td>
+              <td>b</td>
+              <td>c</td>
+              <td>d</td>
             </tr>
-          </table>
-        </section>
+          </tbody>
+        </table>
       </div>
     </main>
+    <script src="../js/bubbling.js"></script>
   </body>
 </html>

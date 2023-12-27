@@ -21,7 +21,7 @@ function onClickHandler(event) {
 
   if (editSpans) {
     editSpans.addEventListener("click", function (event) {
-      document.getElementById("div-modal").classList.remove("hidden");
+      document.getElementById("div-modal").classList.remove("--hidden");
       var row = recursiveRowSearch(event.target);
     });
   }

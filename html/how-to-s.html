@@ -25,8 +25,11 @@
     <link rel="manifest" href="../favicon_io/site.webmanifest" />
 
     <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/custom-selectable-drop-down.css" />
     <link rel="stylesheet" href="../css/table.css" />
+    <link rel="stylesheet" href="../css/modal.css" />
     <link rel="stylesheet" href="../css/button.css" />
+    <link rel="stylesheet" href="../css/dropdown-button-list.css" />
     <link rel="stylesheet" href="../css/image.css" />
   </head>
   <body>
@@ -67,8 +70,10 @@
               />
               <input
                 class="form__input--horizontal --border-radius-5 --border-5-red"
+                id="search"
                 placeholder="search..."
                 type="text"
+                onkeyup="searchByArgumentLinkTopic()"
               />
             </div>
           </form>
@@ -91,45 +96,47 @@
       </div>
     </header>
     <main>
-      <div class="container container-frm">
-        <form action="" class="frm" id="frm-new-link">
-          <div class="frm-input">
-            <div class="relative-wrapper" id="frm-custom-ddwn">
-              <span class="btn-square-powderblue" id="ddwnspn"
-                >Show Arguments</span
-              >
-              <span class="ddwn" id="ddwn"></span>
-            </div>
+      <form class="frm" action="" id="frm-new-link">
+        <div class="--flex-row" id="dropdown__div--flex-row">
+          <div class="dropdown" id="dropdown__div">
+            <button
+              class="dropdown__button --bg-rebeccapurple --border-radius-5"
+              id="dropdown__button"
+              type="menu"
+            >
+              Menu
+              <i
+                class="arrow arrow__direction--righ arrow--aliceblue --rotate-down"
+                id="dropdown__arrow"
+              ></i>
+            </button>
+            <span id="dropdown__span" class="--border-radius-5 --width-100">
+              <ul
+                class="--flex-column --width-fit-content --margin-left-auto --margin-right-auto"
+                id="dropdown__ul"
+              ></ul>
+            </span>
           </div>
-          <div class="frm-input">
-            <label for="theory-link">Link</label>
-            <input type="text" name="theory-link" id="theory-link" />
-          </div>
-          <div class="frm-input">
-            <label for="theory-title">Title</label>
-            <input type="text" name="theory-title" id="theory-title" />
-          </div>
-          <div class="flex-wrapper">
-            <div class="frm-input-btn">
-              <span class="btn-circle-green" id="btn-span" tabindex="0"
-                >&#43;</span
-              >
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="container">
+        </div>
+
+        <label for="input-link">Link</label>
+        <input type="text" id="input-link" style="flex: 1" />
+        <label for="input-topic">Topic</label>
+        <input type="text" id="input-topic" />
+        <span class="" id="" tabindex="0">Add</span>
+      </form>
+      <div>
         <table id="links-table">
-          <thead id="thead">
+          <thead>
             <tr>
               <th>Argument</th>
               <th>Link</th>
-              <th>Title</th>
+              <th>Topic</th>
               <th></th>
             </tr>
           </thead>
-          <tbody id="tbody"></tbody>
-          <tfoot id="tfoot"></tfoot>
+          <tbody></tbody>
+          <tfoot></tfoot>
         </table>
       </div>
       <div class="container" style="justify-content: center">
@@ -146,13 +153,53 @@
         </form>
       </div>
     </main>
-    <footer></footer>
-    <script src="../js/save-to-json.js"></script>
-    <script src="../js/load-theory-from-json.js"></script>
-    <!--
-    <script src="../js/load-drop-down-items.js"></script>
-    <script src="../js/add-new-link.js"></script>
+    <div class="div-modal --hidden" id="div-modal">
+      <section class="sctn-modal">
+        <div class="flex">
+          <button class="btn-close">⨉</button>
+        </div>
+        <h1 class="">Edit the row content</h1>
+        <form class="frm-modal" action="">
+          <span class="btn-span-modal">Arguments</span>
+          ../index.html
+          <div>
+            <label
+              class="frm-lbl-modal"
+              for="frm-input-modal-link"
+              id="frm-lbl-modal-link"
+              >Link</label
+            >
+            <input
+              class="frm-input-modal"
+              type="text"
+              id="frm-input-modal-link"
+            />
+          </div>
+          <div>
+            <label
+              class="frm-lbl-modal"
+              for="frm-input-modal-topic"
+              id="frm-lbl-modal-topic"
+              >Topic</label
+            >
+            <input
+              class="frm-input-modal"
+              type="text"
+              id="frm-input-modal-topic"
+            />
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <script src="../js/fill-table.js"></script>
+    <script src="../js/load-data-from-json.js"></script>
+    <script src="../js/search.js"></script>
     <script src="../js/barspace-clicked.js"></script>
-    <script src="../js/append-events.js"></script>
-  --></body>
+    <script src="../js/save-to-json.js"></script>
+    <script src="../js/open-modal.js"></script>
+    <script src="../js/using-the-fetch-api.js"></script>
+    <script src="../js/add-new-link.js"></script>
+    <script src="../js/bubbling.js"></script>
+  </body>
 </html>

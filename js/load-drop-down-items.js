@@ -1,23 +1,27 @@
 function showDropDownItems() {
-  var dropDown = document.getElementById("ddwn");
+  var dropDownUl = document.getElementById("dropdown__ul");
 
-  var spanText = document.getElementById("ddwnspn");
+  var dropDownButton = document.getElementById("dropdown__button");
 
-  if (dropDown.innerHTML.length <= 0) {
-    showArguments(dropDown, spanText);
+  if (dropDownUl && dropDownUl.innerHTML.length <= 0) {
+    showArguments(dropDownUl, dropDownButton);
   } else {
-    hideArguments(dropDown, spanText);
+    hideArguments(dropDownUl, dropDownButton);
   }
 }
 
-const hideArguments = function (dropDown, spanText) {
-  document.getElementById("inserted-list-item").remove();
-  dropDown.innerHTML = "";
-  spanText.innerText = "Show Arguments";
-  dropDown.style.display = "none";
+const hideArguments = function (dropDownUl, dropDownButton) {
+
+  for (let i = 0; i < dropDownUl.childNodes.length; i++) {
+    dropDownUl.childNodes[i].remove();
+  }
+
+  dropDownUl.innerHTML = "";
+  dropDownButton.innerText = "Show Arguments";
+  document.getElementById("dropdown__span").style.display = "none";
 };
 
-const showArguments = async function (dropDown, spanText) {
+const showArguments = async function (dropDownUl, dropDownButton) {
   let item = { elements: "" };
 
   const response = await fetch("../data/arguments.json");
@@ -25,26 +29,33 @@ const showArguments = async function (dropDown, spanText) {
 
   for (let i = 0; i < arguments.arguments.length; i++) {
     let tempName = arguments.arguments[i].name;
-
+    /*
     item.elements += `<li class="inserted-list-item" id="inserted-list-item">
                         <input class="custom-checkbox" type="checkbox" name="${tempName}" id="${tempName}" style="left:50px"/>
                         <label for="${tempName}" class="custom-label" name="${tempName}" value="${tempName}" style="left:50px">${tempName}</label>
                       </li>`;
+    */
+    item.elements += `<li class="--width-fit-content --bg-rebeccapurple" id="dropdown__item">
+                        <input
+                          class="--width-fit-content"
+                          type="checkbox"
+                          name="${tempName}"
+                          id="${tempName + i}"
+                        />
+                        <label class="--width-fit-content" for="${tempName + i}">${tempName}</label>
+                      </li>`;
   }
 
-  dropDown.innerHTML = `${item.elements}`;
+  dropDownUl.innerHTML = `${item.elements}`;
 
-  spanText.innerText = "Hide Arguments";
-  dropDown.style.display = "block";
+  dropDownButton.innerText = "Hide Arguments";
+  document.getElementById("dropdown__span").style.display = "block";
 
-  dropDown.style.top =
-    Math.ceil(spanText.getBoundingClientRect().y / 2).toString() + "px";
-  dropDown.style.left =
-    Math.ceil(spanText.getBoundingClientRect().x / 2).toString() + "px";
+  document.getElementById("dropdown__span").style.top =
+    Math.ceil(dropDownButton.getBoundingClientRect().y / 2).toString() + "px";
+  document.getElementById("dropdown__span").style.left =
+    Math.ceil(dropDownButton.getBoundingClientRect().x).toString() + "px";
 };
 
-let btnDropDown = document.querySelector('[class="btn-square-powderblue"]');
-btnDropDown =
-  btnDropDown === null ? document.getElementById("ddwnspn") : btnDropDown;
-
-btnDropDown.onclick = showDropDownItems;
+let dropDownButton = document.querySelector('#dropdown__button');
+dropDownButton.onclick = dropDownButton.onclick === null ? showDropDownItems : dropDownButton.onclick;

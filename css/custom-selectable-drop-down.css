@@ -52,7 +52,8 @@
 
 .btn-span:hover,
 .btn-span-green:hover,
-.btn-span-red:hover {
+.btn-span-red:hover,
+.btn-span-save:hover {
   cursor: pointer;
   user-select: none;
 }
@@ -76,12 +77,6 @@
 
 #ddwn {
   display: none;
-  /*
-  flex-direction: column;
-  align-content: start;
-  align-items: start;
-  justify-content: start;
-  */
   min-width: max-content;
   z-index: 200;
   position: absolute;

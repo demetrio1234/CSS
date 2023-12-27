@@ -1,132 +1,56 @@
 @import "./html.css";
 
-.container {
-  min-height: 5vh;
+.navbar {
   display: flex;
+  justify-content: center;
   flex: 1;
+  height: fit-content;
 }
 
-.nav {
-  display: flex;
-  color: antiquewhite;
-  background-color: purple;
-  flex-wrap: wrap;
-  flex: 1;
-}
-
-.nav:nth-of-type(1) {
-  justify-content: start;
-}
-/*
-.nav:nth-of-type(2) {
-}
-*/
-.nav:nth-of-type(3) {
-  justify-content: end;
-}
-
-/* https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator */
-.nav > * {
-  /* flex-flow: wrap; */
-  flex: 1;
-  align-items: center;
-}
-
-div.nav:nth-child(2) > form:nth-child(1) {
-  min-height: 30px;
-  height: 35px;
-  max-height: 40px;
-}
-
-ul {
-  margin-top: 0;
-  margin-bottom: 0;
-  min-height: 3.5vw;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  list-style-type: none;
+.navbar__nav--horizontal {
   display: flex;
   align-items: center;
+}
+
+.navbar__logo--ms {
+  min-width: 25px;
+}
+
+.navbar__ul--horizontal {
+  display: flex;
   justify-content: space-around;
-}
-
-li {
-  flex: auto;
-  text-align: center;
-  text-transform: lowercase;
-  min-height: 3.5vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 0px solid antiquewhite;
-}
-
-li:hover {
-  border-color: antiquewhite;
-  color: blueviolet;
-  opacity: 0.2;
-  border-radius: 5px;
-  background: beige;
   padding: 5px;
-  text-transform: capitalize;
-  transition-duration: 250ms;
 }
 
-ul li,
-form input {
-  max-height: 100%;
-  font-size: inherit;
+.navbar__li {
+  list-style-type: none;
+  padding: 5px;
+}
+
+.navbar__form--horizontal {
+  display: inline-block;
+}
+
+.form__div--flex {
+  display: flex;
+  justify-content: space-evenly;
+  justify-items: center;
+}
+
+.form__search-img--small {
+  height: 20px;
+  transition: transform 250ms ease-in-out;
+}
+
+.form__search-img--small:hover {
+  transform: scale(1.25);
+}
+
+.form__input--horizontal {
   text-align: center;
 }
 
-/* https://www.w3schools.com/css/css_link.asp */
-a,
-a:link {
-  text-decoration: none;
-  color: rgba(167, 167, 167, 0.8);
-}
-
-/* visited link */
-a:visited {
-  color: rgb(167, 167, 167);
-}
-
-/* mouse over link */
-a:hover {
-  color: rgb(255, 0, 128);
-  transition: 250ms;
-}
-
-/* selected link */
-a:active {
-  color: blue;
-}
-
-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-button,
-input {
-  font: inherit;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-input,
-label {
-  width: auto;
-  height: auto;
-  opacity: 0.5;
-  flex: 0.8;
-}
-
-label {
-  text-align: start;
-  flex: 0.2;
+.form__input--horizontal:hover {
+  border: 1px solid red;
+  cursor: pointer;
 }

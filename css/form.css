@@ -1,0 +1,43 @@
+.frm--inline {
+  display: inline;
+  flex: 1;
+  text-align: center;
+  padding-top: 3px;
+  color: blueviolet;
+}
+
+.frm--flex {
+  display: flex;
+  flex: 1;
+  padding: 5px;
+  position: relative;
+  justify-items: space-around;
+}
+
+.frm__input--inline-block {
+  display: inline-block;
+}
+
+.frm__select,
+.frm__input {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+  position: relative;
+  z-index: 100;
+}
+
+.container-frm {
+  background-color: rgba(102, 51, 153, 0.258);
+  justify-items: center;
+}
+
+.container.container-frm {
+  display: flex;
+}
+
+.container-frm > * {
+  margin: 5px;
+}

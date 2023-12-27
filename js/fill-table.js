@@ -1,11 +1,11 @@
 function fillTable(links) {
   if (links !== undefined) {
     if (links) {
-      let table = document.getElementById("links-table");
+      let tbody = document.querySelector("tbody");
 
       for (let i = 0; i < links.length; i++) {
         //Add a new row
-        var row = table.insertRow(-1);
+        var row = tbody.insertRow(-1);
 
         //Add categories
         let categories = { categories: "" };
