@@ -1,7 +1,7 @@
 .div-modal,
 .sctn-modal,
-.frm-modal,
-.frm-modal > * {
+.form-modal,
+.form-modal > * {
   padding: 5px;
 }
 
@@ -36,7 +36,7 @@
   border-radius: 5px;
 }
 
-.frm-modal {
+.form-modal {
   flex-direction: column;
 }
 

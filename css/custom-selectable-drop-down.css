@@ -64,7 +64,7 @@
   color: black;
 }
 
-.ddwnspn {
+.dropdownspan {
   background-color: rgb(7, 55, 99);
   border-radius: 5px;
   color: white;
@@ -75,7 +75,7 @@
   position: absolute;
 }
 
-#ddwn {
+#dropdown {
   display: none;
   min-width: max-content;
   z-index: 200;

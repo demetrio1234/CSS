@@ -1,12 +1,12 @@
 window.onkeydown = function (event) {
-  let btnspn = document.getElementById("btn-span");
-  let ddwnspn = document.getElementById("ddwnspn");
+  let btnspan = document.getElementById("btn-span");
+  let dropdownspan = document.getElementById("dropdownspan");
 
-  if (document.activeElement === btnspn && event.keyCode === 32) {
+  if (document.activeElement === btnspan && event.keyCode === 32) {
     event.preventDefault();
-    btnspn.click();
-  } else if (document.activeElement === ddwnspn && event.keyCode === 32) {
+    btnspan.click();
+  } else if (document.activeElement === dropdownspan && event.keyCode === 32) {
     event.preventDefault();
-    ddwnspn.click();
+    dropdownspan.click();
   }
 };

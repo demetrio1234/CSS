@@ -1,4 +1,4 @@
-.frm--inline {
+.form--inline {
   display: inline;
   flex: 1;
   text-align: center;
@@ -6,7 +6,7 @@
   color: blueviolet;
 }
 
-.frm--flex {
+.form--flex {
   display: flex;
   flex: 1;
   padding: 5px;
@@ -14,12 +14,12 @@
   justify-items: space-around;
 }
 
-.frm__input--inline-block {
+.form__input--inline-block {
   display: inline-block;
 }
 
-.frm__select,
-.frm__input {
+.form__select,
+.form__input {
   display: flex;
   flex: 1;
   justify-content: space-around;
@@ -29,15 +29,15 @@
   z-index: 100;
 }
 
-.container-frm {
+.container-form {
   background-color: rgba(102, 51, 153, 0.258);
   justify-items: center;
 }
 
-.container.container-frm {
+.container.container-form {
   display: flex;
 }
 
-.container-frm > * {
+.container-form > * {
   margin: 5px;
 }

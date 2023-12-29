@@ -8,21 +8,21 @@
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href=".../favicon_io/apple-touch-icon.png"
+      href="../favicon_io/apple-touch-icon.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href=".../favicon_io/favicon-32x32.png"
+      href="../favicon_io/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href=".../favicon_io/favicon-16x16.png"
+      href="../favicon_io/favicon-16x16.png"
     />
-    <link rel="manifest" href=".../favicon_io/site.webmanifest" />
+    <link rel="manifest" href="../favicon_io/site.webmanifest" />
 
     <link rel="stylesheet" href="../css/navbar.css" />
     <link rel="stylesheet" href="../css/dropdown-button-list.css" />
@@ -112,6 +112,23 @@
             ></ul>
           </span>
         </div>
+
+        <form class="form" action="" id="form-new-link">
+          <label for="input-link">Link</label>
+          <input type="text" id="input-link" style="flex: 1" />
+
+          <label for="input-topic">Topic</label>
+          <input type="text" id="input-topic" />
+
+          <button
+            class="form-input-btn btn-span-save"
+            value="Add"
+            tabindex="0"
+            id="button-add-new-link"
+          >
+            Add new Link
+          </button>
+        </form>
       </div>
       <div class="table">
         <table>
@@ -123,17 +140,18 @@
               <th>Timestamps</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>a</td>
-              <td>b</td>
-              <td>c</td>
-              <td>d</td>
-            </tr>
-          </tbody>
+          <tbody id="tbody"></tbody>
         </table>
       </div>
     </main>
+    <script src="../js/fill-table.js"></script>
+    <script src="../js/load-data-from-json.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/barspace-clicked.js"></script>
+    <script src="../js/save-to-json.js"></script>
+    <script src="../js/open-modal.js"></script>
+    <script src="../js/using-the-fetch-api.js"></script>
+
     <script src="../js/bubbling.js"></script>
   </body>
 </html>

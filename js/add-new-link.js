@@ -1,16 +1,18 @@
 function addNewLink() {
-  let formNewLink = document.getElementById("frm-new-link");
+  let formNewLink = document.getElementById("form-new-link");
 
   if (formNewLink !== null) {
     let table = document.getElementById("links-table");
 
     if (table !== null) {
-      let formCustomDropDown = document.getElementById("frm-custom-ddwn");
+      let formCustomDropDown = document.getElementById("form-custom-dropdown");
 
       if (formCustomDropDown !== null) {
-        let ddwn = document.getElementById("ddwn");
+        let dropdown = document.getElementById("dropdown");
 
-        if (ddwn !== null) {
+
+
+        if (dropdown !== null) {
           let customCheckbox =
             document.getElementsByClassName("custom-checkbox");
 

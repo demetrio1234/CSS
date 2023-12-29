@@ -23,14 +23,14 @@
   cursor: pointer;
 }
 
-.frm-input-btn {
+.form-input-btn {
   display: flex;
   align-items: center;
   width: 25px;
   height: 25px;
 }
 
-.frm-input-btn .btn-circle-green {
+.form-input-btn .btn-circle-green {
   width: 23px;
   height: 23px;
 }

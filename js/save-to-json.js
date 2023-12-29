@@ -1,5 +1,5 @@
 function saveToJson() {
-  let fileName = document.getElementById("frm-input-save").value;
+  let fileName = document.getElementById("form-input-save").value;
   if (fileName.length <= 0 || fileName === null) {
     alert("Please enter a name to save the new json file.");
     return;
@@ -54,7 +54,7 @@ function saveToJson() {
   a.download = fileName;
   a.click();
 
-  document.getElementById("frm-input-save").value = "";
+  document.getElementById("form-input-save").value = "";
 }
 
 /*
