@@ -41,3 +41,15 @@
 .container-form > * {
   margin: 5px;
 }
+
+.newlink__input {
+  min-width: fit-content;
+  min-height: fit-content;
+  padding: 0.5rem;
+  border: 0rem;
+  opacity: 0.85;
+  transition: all 250ms;
+}
+.newlink__input:hover {
+  opacity: 1;
+}

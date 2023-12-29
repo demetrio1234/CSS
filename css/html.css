@@ -175,6 +175,10 @@ li {
   background-color: black;
   color: white;
 }
+.--bg-green {
+  background-color: green;
+  color: white;
+}
 
 /* Box Shadows */
 .box-shadow-small-rebeccapurple-hover {
