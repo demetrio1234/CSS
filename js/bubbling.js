@@ -1,11 +1,9 @@
 const main = document.querySelector("body main");
 
 main.addEventListener("click", function (event) {
-  var cName = event.target.className;
+  var targetId = event.target.id;
 
-  cName = event.target.id;
-
-  switch (cName) {
+  switch (targetId) {
     case "btn-span":
       let menu = document.querySelector("#nav");
 
@@ -22,7 +20,7 @@ main.addEventListener("click", function (event) {
 
       if (navUl.children.length > 0) navUl.children[0].remove();
       break;
-    case "btn-span-save":
+    case "-btn-span-save":
       let name = document.getElementById("form-input-name");
       let surname = document.getElementById("form-input-surname");
       let birthday = document.getElementById("form-input-birthday");
@@ -50,6 +48,23 @@ main.addEventListener("click", function (event) {
     case "button-add-new-link":
       getFormData();
       event.preventDefault();
+      break;
+    case "btn-span-save":
+      saveToJson();
+      event.preventDefault();
+      break;
+    default:
+      break;
+  }
+});
+
+const header = document.querySelector("header");
+header.addEventListener("keyup", (event) => {
+  var targetId = event.target.id;
+
+  switch (targetId) {
+    case "nav__input-search":
+      searchByArgumentLinkTopic();
       break;
     default:
       break;
@@ -201,4 +216,60 @@ const resetForm = function () {
   } catch (error) {
     console.log(error)
   }
+}
+
+const saveToJson = function () {
+  let fileName = document.getElementById("form-input-save").value;
+  if (fileName.length <= 0 || fileName === null) {
+    alert("Please enter a name to save the new json file.");
+    return;
+  }
+
+  let tbody = document.querySelector("tbody");
+  //table = table === null ? document.getElementById("theory-table") : table;
+
+  let rows = tbody.getElementsByTagName("tr");
+  if (rows.length <= 1) {
+    alert("Please enter at least a new item in the table to save a new json file.");
+    return;
+  }
+
+  let links = [
+    { categories: [], href: "", innerText: "", description: "", summary: "" },
+  ];
+
+  for (let i = 0; i < rows.length; i++) {
+    let categories = rows[i].cells[0].innerText.split("/");
+
+    let tempRow = {
+      categories: [],
+      href: "",
+      innerText: "",
+      description: "",
+      summary: "",
+    };
+
+    tempRow.categories = categories;
+
+    for (let j = 1; j < 4; j++) {
+      if (j === 1) {
+        tempRow.href = rows[i].cells[j].getElementsByTagName("a")[0].href;
+        tempRow.innerText =
+          rows[i].cells[j].getElementsByTagName("a")[0].innerText;
+      } else {
+        tempRow.description = rows[i].cells[j].innerText;
+      }
+    }
+
+    links.push(tempRow);
+  }
+
+  var jsonData = JSON.stringify(links);
+  var a = document.createElement("a");
+  var file = new Blob([jsonData], { type: "text/plain" });
+  a.href = URL.createObjectURL(file);
+  a.download = fileName;
+  a.click();
+
+  document.getElementById("form-input-save").value = "";
 }

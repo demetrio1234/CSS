@@ -25,10 +25,6 @@
     <link rel="manifest" href="../favicon_io/site.webmanifest" />
 
     <link rel="stylesheet" href="../css/navbar.css" />
-    <link rel="stylesheet" href="../css/custom-selectable-drop-down.css" />
-    <link rel="stylesheet" href="../css/table.css" />
-    <link rel="stylesheet" href="../css/modal.css" />
-    <link rel="stylesheet" href="../css/button.css" />
     <link rel="stylesheet" href="../css/dropdown-button-list.css" />
     <link rel="stylesheet" href="../css/image.css" />
   </head>
@@ -51,12 +47,14 @@
               >
             </li>
             <li class="navbar__li">
-              <a class="a--underline-rebeccapurple" href="./how-to-s.html"
+              <a class="a--underline-rebeccapurple" href="../html/how-to-s.html"
                 >"How To"s</a
               >
             </li>
             <li class="navbar__li">
-              <a class="a--underline-rebeccapurple" href="./gpt-results.html"
+              <a
+                class="a--underline-rebeccapurple"
+                href="../html/gpt-results.html"
                 >Gpt-Results</a
               >
             </li>
@@ -70,21 +68,20 @@
               />
               <input
                 class="form__input--horizontal --border-radius-5 --border-5-red"
-                id="search"
+                id="nav__input-search"
                 placeholder="search..."
                 type="text"
-                onkeyup="searchByArgumentLinkTopic()"
               />
             </div>
           </form>
           <ul class="navbar__ul--horizontal">
             <li class="navbar__li">
-              <a class="a--underline-rebeccapurple" href="./tools.html"
+              <a class="a--underline-rebeccapurple" href="../html/tools.html"
                 >Tools</a
               >
             </li>
             <li class="navbar__li">
-              <a class="a--underline-rebeccapurple" href="./theory.html"
+              <a class="a--underline-rebeccapurple" href="../html/theory.html"
                 >Theory</a
               >
             </li>
@@ -96,50 +93,44 @@
       </div>
     </header>
     <main>
-      <form class="form" action="" id="form-new-link">
-        <div class="--flex-row" id="dropdown__div--flex-row">
-          <div class="dropdown" id="dropdown__div">
-            <button
-              class="dropdown__button --bg-rebeccapurple --border-radius-5"
-              id="dropdown__button"
-              type="menu"
-            >
-              Menu
-              <i
-                class="arrow arrow__direction--righ arrow--aliceblue --rotate-down"
-                id="dropdown__arrow"
-              ></i>
-            </button>
-            <span id="dropdown__span" class="--border-radius-5 --width-100">
-              <ul
-                class="--flex-column --width-fit-content --margin-left-auto --margin-right-auto"
-                id="dropdown__ul"
-              ></ul>
-            </span>
-          </div>
+      <div class="--flex-row" id="dropdown__div--flex-row">
+        <div class="dropdown" id="dropdown__div">
+          <button
+            class="dropdown__button --bg-rebeccapurple --border-radius-5"
+            id="dropdown__button"
+            type="menu"
+          >
+            Menu
+            <i
+              class="arrow arrow__direction--righ arrow--aliceblue --rotate-down"
+              id="dropdown__arrow"
+            ></i>
+          </button>
+          <span id="dropdown__span" class="--border-radius-5 --width-100">
+            <ul
+              class="--flex-column --width-fit-content --margin-left-auto --margin-right-auto"
+              id="dropdown__ul"
+            ></ul>
+          </span>
         </div>
 
-        <label for="input-link">Link</label>
-        <input type="text" id="input-link" style="flex: 1" />
-        <label for="input-topic">Topic</label>
-        <input type="text" id="input-topic" />
-        <span class="" id="" tabindex="0">Add</span>
-      </form>
-      <div>
-        <table id="links-table">
-          <thead>
-            <tr>
-              <th>Argument</th>
-              <th>Link</th>
-              <th>Topic</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-          <tfoot></tfoot>
-        </table>
-      </div>
-      <div class="container" style="justify-content: center">
+        <form class="form" action="" id="form-new-link">
+          <label for="input-link">Link</label>
+          <input type="text" id="input-link" style="flex: 1" />
+
+          <label for="input-topic">Topic</label>
+          <input type="text" id="input-topic" />
+
+          <button
+            class="form-input-btn btn-span-save"
+            value="Add"
+            tabindex="0"
+            id="button-add-new-link"
+          >
+            Add new Link
+          </button>
+        </form>
+
         <form class="form" action="" id="form-save">
           <label for="form-input-save"></label>
           <input
@@ -148,57 +139,64 @@
             id="form-input-save"
             name="form-input-save"
           />
-          <span class="btn-span" id="btn-span-save">Save to JSON</span>
-          <span class="btn-span" id="btn-span-reload">Reload from JSON</span>
+          <button class="btn-span" id="btn-span-save">Save to JSON</button>
+          <button class="btn-span" id="btn-span-reload">
+            Reload from JSON
+          </button>
+        </form>
+      </div>
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Arguments</th>
+              <th>Links</th>
+              <th>Descriptions</th>
+              <th>Timestamps</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <div class="div-modal --hidden" id="div-modal">
+        <form class="form" id="form" action="">
+          <input class="form-input" id="form-input-name" type="text" />
+          <label class="form-label" id="form-label-name" for="form-input-name"
+            >Name</label
+          >
+
+          <input class="form-input" id="form-input-surname" type="text" />
+          <label
+            class="form-label"
+            id="form-label-surname"
+            for="form-input-surname"
+            >Surname</label
+          >
+
+          <input class="form-input" id="form-input-birthday" type="text" />
+          <label
+            class="form-label"
+            id="form-label-birthday"
+            for="form-input-birthday"
+            >Birthday</label
+          >
+
+          <input class="form-input" id="form-input-email" type="text" />
+
+          <label class="form-label" id="form-label-email" for="form-input-email"
+            >Email</label
+          >
+          <span class="btn-span-save" id="form-input-btn-span-save">Save</span>
         </form>
       </div>
     </main>
-    <div class="div-modal --hidden" id="div-modal">
-      <section class="sctn-modal">
-        <div class="flex">
-          <button class="btn-close">⨉</button>
-        </div>
-        <h1 class="">Edit the row content</h1>
-        <form class="form-modal" action="">
-          <span class="btn-span-modal">Arguments</span>
-          <div>
-            <label
-              class="form-label-modal"
-              for="form-input-modal-link"
-              id="form-label-modal-link"
-              >Link</label
-            >
-            <input
-              class="form-input-modal"
-              type="text"
-              id="form-input-modal-link"
-            />
-          </div>
-          <div>
-            <label
-              class="form-label-modal"
-              for="form-input-modal-topic"
-              id="form-label-modal-topic"
-              >Topic</label
-            >
-            <input
-              class="form-input-modal"
-              type="text"
-              id="form-input-modal-topic"
-            />
-          </div>
-        </form>
-      </section>
-    </div>
-
     <script src="../js/fill-table.js"></script>
     <script src="../js/load-data-from-json.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/barspace-clicked.js"></script>
-    <script src="../js/save-to-json.js"></script>
     <script src="../js/open-modal.js"></script>
     <script src="../js/using-the-fetch-api.js"></script>
-    <script src="../js/add-new-link.js"></script>
+
     <script src="../js/bubbling.js"></script>
   </body>
 </html>
