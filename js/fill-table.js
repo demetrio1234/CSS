@@ -31,11 +31,9 @@ function fillTable(links) {
 
         //Add Buttons
         let cellButtons = row.insertCell(3);
-        cellButtons.innerHTML = `<div id="div-btn-span-edit">
-                                   <span class="btn-span-green">Edit</span>
-                                 </div>
-                                 <div id="div-btn-span-delete">
-                                   <span class="btn-span-red">Delete</span>
+        cellButtons.innerHTML = `<div class="--flex-column">
+                                   <span id="button-span-edit-${i}" class="button-span-green --margin-b-3">Edit</span>
+                                   <span id="button-span-delete-${i}" class="button-span-red --margin-t-3">Delete</span>
                                  </div>`;
       }
     }

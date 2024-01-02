@@ -1,4 +1,4 @@
-async function loadTableData() {
+const loadTableData = async function () {
   const response = await fetch("../data/exported-links.json");
   const links = await response.json();
 

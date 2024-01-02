@@ -52,7 +52,7 @@ const addNewLink = function (selectedArgumentsNames, inputLink, inputTopic) {
         cellTopic.innerText = inputTopic;
 
         let cellButtons = row.insertCell(3);
-        cellButtons.innerHTML = `<div><span class="btn-span-green">Edit</span><span class="btn-span-red">Delete</span></div>`;
+        cellButtons.innerHTML = `<div><span class="button-span-green">Edit</span><span class="button-span-red">Delete</span></div>`;
 
         resetForm();
     }

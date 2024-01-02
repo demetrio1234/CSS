@@ -1,5 +1,5 @@
 window.onkeydown = function (event) {
-  let btnspan = document.getElementById("btn-span");
+  let btnspan = document.getElementById("button-span");
   let dropdownspan = document.getElementById("dropdownspan");
 
   if (document.activeElement === btnspan && event.keyCode === 32) {

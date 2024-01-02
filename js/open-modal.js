@@ -1,3 +1,3 @@
 const openModal = function (row) {
-  document.getElementById("div-modal").classList.remove("-hidden");
+  document.getElementById("modal").classList.remove("-hidden");
 };

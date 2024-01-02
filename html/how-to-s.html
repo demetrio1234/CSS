@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="../css/image.css" />
     <link rel="stylesheet" href="../css/table.css" />
     <link rel="stylesheet" href="../css/form.css" />
+    <link rel="stylesheet" href="../css/custom-selectable-drop-down.css" />
   </head>
   <body>
     <header>
@@ -155,13 +156,13 @@
           />
           <button
             class="newlink__input --border-radius-5 --bg-green"
-            id="btn-span-save"
+            id="button-span-save"
           >
             Save to JSON
           </button>
           <button
             class="newlink__input --border-radius-5 --bg-azure"
-            id="btn-span-reload"
+            id="button-span-reload"
           >
             Reload from JSON
           </button>
@@ -169,7 +170,7 @@
       </div>
       <div class="table">
         <table>
-          <thead>
+          <thead class="thead">
             <tr>
               <th>Arguments</th>
               <th>Links</th>
@@ -180,45 +181,57 @@
           <tbody id="tbody"></tbody>
         </table>
       </div>
-      <div class="div-modal --hidden" id="div-modal">
-        <form class="form" id="form" action="">
-          <input class="form-input" id="form-input-name" type="text" />
-          <label class="form-label" id="form-label-name" for="form-input-name"
-            >Name</label
-          >
+    </main>
 
-          <input class="form-input" id="form-input-surname" type="text" />
-          <label
-            class="form-label"
-            id="form-label-surname"
-            for="form-input-surname"
-            >Surname</label
-          >
+    <div class="modal__bg --hidden" id="modal">
+      <div
+        class="--flex-column --width-350"
+        style="resize: both; overflow: auto"
+      >
+        <button
+          class="modal__button-close --text-align-center button-circle__--green"
+          id="modal__button-close"
+        >
+          X
+        </button>
+        <form class="modal__content --flex-column" id="form" action="">
+          <select
+            name="arguments"
+            id="modal__select-arguments"
+            class=""
+            multiple
+          ></select>
 
-          <input class="form-input" id="form-input-birthday" type="text" />
-          <label
-            class="form-label"
-            id="form-label-birthday"
-            for="form-input-birthday"
-            >Birthday</label
-          >
+          <input
+            class="form-input"
+            id="modal__input-link"
+            type="text"
+            placeholder="Link"
+          />
+          <input
+            class="form-input"
+            id="modal__input-description"
+            type="text"
+            placeholder="Description"
+          />
+          <input
+            class="form-input --pointer-events-none"
+            id="modal__input-timestamp"
+            type="text"
+            placeholder="Timestamp"
+          />
 
-          <input class="form-input" id="form-input-email" type="text" />
-
-          <label class="form-label" id="form-label-email" for="form-input-email"
-            >Email</label
+          <span class="button-span-save" id="form-input-button-span-save"
+            >Save</span
           >
-          <span class="btn-span-save" id="form-input-btn-span-save">Save</span>
         </form>
       </div>
-    </main>
+    </div>
     <script src="../js/fill-table.js"></script>
     <script src="../js/load-data-from-json.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/barspace-clicked.js"></script>
     <script src="../js/open-modal.js"></script>
-    <script src="../js/using-the-fetch-api.js"></script>
-
     <script src="../js/bubbling.js"></script>
   </body>
 </html>

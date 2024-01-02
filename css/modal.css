@@ -1,11 +1,11 @@
-.div-modal,
-.sctn-modal,
+.modal,
+.section-modal,
 .form-modal,
 .form-modal > * {
   padding: 5px;
 }
 
-.div-modal {
+.modal {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -21,14 +21,14 @@
   border-radius: 15px;
 }
 
-.div-modal .sctn-modal,
+.modal .section-modal,
 .flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.sctn-modal {
+.section-modal {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -44,7 +44,7 @@ body {
   position: relative;
 }
 
-.btn-close {
+.button-close {
   cursor: pointer;
   border: none;
   font-weight: 600;
@@ -61,11 +61,44 @@ body {
   border-radius: 50%;
 }
 
-.btn-close:hover {
+.button-close:hover {
   background-color: aliceblue;
   color: black;
 }
 
-.--hidden {
-  display: none;
+.modal__bg {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #544e45;
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  justify-content: center;
+  text-align: center;
+}
+
+.modal__content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.modal__button-close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal__button-close:hover,
+.modal__button-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }

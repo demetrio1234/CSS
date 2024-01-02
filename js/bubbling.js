@@ -1,26 +1,24 @@
 const main = document.querySelector("body main");
-
-main.addEventListener("click", function (event) {
+main.addEventListener("click", (event) => {
   var targetId = event.target.id;
 
+  let rgx = /-\d+/g;
+
+  if (rgx.test(targetId))
+    targetId = targetId.replace(rgx, "");
+
   switch (targetId) {
-    case "btn-span":
+    case "button-span":
       let menu = document.querySelector("#nav");
 
       showHide(menu);
       break;
-    case "btn-span-green":
-      //Edit event is fired up
-      let modal = document.getElementById("div-modal");
-
-      showHide(modal);
-      break;
-    case "btn-span-red":
+    case "button-span-red":
       let navUl = document.querySelector("#nav-ul");
 
       if (navUl.children.length > 0) navUl.children[0].remove();
       break;
-    case "-btn-span-save":
+    case "-button-span-save":
       let name = document.getElementById("form-input-name");
       let surname = document.getElementById("form-input-surname");
       let birthday = document.getElementById("form-input-birthday");
@@ -49,7 +47,13 @@ main.addEventListener("click", function (event) {
       getFormData();
       event.preventDefault();
       break;
-    case "btn-span-save":
+    case "button-span-edit":
+      editRow(event.target);
+      break;
+    case "button-span-delete":
+      deleteRow();
+      break;
+    case "button-span-save":
       saveToJson();
       event.preventDefault();
       break;
@@ -65,6 +69,21 @@ header.addEventListener("keyup", (event) => {
   switch (targetId) {
     case "nav__input-search":
       searchByArgumentLinkTopic();
+      break;
+    default:
+      break;
+  }
+});
+
+const modal = document.querySelector("#modal")
+modal.addEventListener("click", (event) => {
+  switch (event.target.id) {
+    case "modal__select-arguments":
+      event.preventDefault();
+      break;
+    case "modal__button-close":
+      form.innerHTML = ''
+      showHide(event.target.parentElement.parentElement);
       break;
     default:
       break;
@@ -166,7 +185,7 @@ const getFormData = function () {
   }
 
   addNewLink(selectedArgumentsNames, inputLink, inputTopic);
-}
+};
 
 const addNewLink = function (selectedArgumentsNames, inputLink, inputTopic) {
 
@@ -194,11 +213,11 @@ const addNewLink = function (selectedArgumentsNames, inputLink, inputTopic) {
     cellTopic.innerText = inputTopic;
 
     let cellButtons = row.insertCell(3);
-    cellButtons.innerHTML = `<div><span class="btn-span-green">Edit</span><span class="btn-span-red">Delete</span></div>`;
+    cellButtons.innerHTML = `<div><span class="button-span-green">Edit</span><span class="button-span-red">Delete</span></div>`;
 
     resetForm();
   }
-}
+};
 
 const resetForm = function () {
   let dropDownUl = document.getElementById("dropdown__ul");
@@ -215,6 +234,26 @@ const resetForm = function () {
     inputTopic.value = "";
   } catch (error) {
     console.log(error)
+  }
+};
+
+const clearFormElements = function (element) {
+  for (let i = 0; i < element.childNodes.length; i++) {
+    const child = element.childNodes[i];
+
+    // Check if the node is an element
+    if (child.nodeType === 1) {
+      // For input, textarea, and select elements, clear their values
+      if (child.tagName === 'INPUT' || child.tagName === 'TEXTAREA' || child.tagName === 'SELECT') {
+        child.value = '';
+      } else {
+        // For other elements, clear their textContent
+        child.textContent = '';
+      }
+
+      // Recursively call the function for child elements
+      clearFormElements(child);
+    }
   }
 }
 
@@ -272,4 +311,51 @@ const saveToJson = function () {
   a.click();
 
   document.getElementById("form-input-save").value = "";
-}
+};
+
+const editRow = function (editButton) {
+  showHide(document.querySelector("#modal"));
+  fillModalForm(editButton);
+};
+
+const fillModalForm = function (editButton) {
+  fillDropDownByPageAndEvent("arguments.json", editButton);
+};
+
+const fillDropDownByPageAndEvent = async function (jsonFileName, editButton) {
+  //Read the arguments from the file arguments.json
+  const response = await fetch(`../data/${jsonFileName}`);
+  const argumentsObject = await response.json();
+  const arguments = argumentsObject.arguments;
+  //Get the section and prefill it with a first empty option 
+  let section = document.querySelector("#modal__select-arguments");
+  let sectionInnerHtml = '<option value="" id="modal__option-" class=""></option>';
+
+  //Get the row to edit and its textContent
+  let div = editButton.parentElement;
+  let cell = div.parentElement;
+  let row = cell.parentElement;
+
+  //Loop through all arguments and create all options
+  for (let argument of arguments) {
+    let innerText = row.cells[0].innerText;
+    if (innerText.includes(argument.name)) {
+      sectionInnerHtml += `<option value="${argument.name}" id="modal__option-${argument.id}" class="" selected>${argument.name}</option>`
+    } else {
+      sectionInnerHtml += `<option value="${argument.name}" id="modal__option-${argument.id}" class="">${argument.name}</option>`
+    }
+  }
+
+  section.innerHTML = sectionInnerHtml;
+
+  //Placeholders
+  document.querySelector('#modal__input-link').placeholder = row.cells[1].innerText;
+  document.querySelector('#modal__input-description').placeholder = row.cells[2].innerText;
+  document.querySelector('#modal__input-timestamp').placeholder = row.cells[3].innerText;
+
+  //Values
+  document.querySelector('#modal__input-link').value = row.cells[1].innerText;
+  document.querySelector('#modal__input-description').value = row.cells[2].innerText;
+  document.querySelector('#modal__input-timestamp').value = row.cells[3].innerText;
+
+};

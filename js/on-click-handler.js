@@ -7,7 +7,7 @@ function recursiveRowSearch(element) {
 }
 
 function onClickHandler(event) {
-  const delSpans = document.querySelector("#div-btn-span-delete span");
+  const delSpans = document.querySelector("#div-button-span-delete span");
 
   if (delSpans) {
     delSpans.addEventListener("click", function (event) {
@@ -17,11 +17,11 @@ function onClickHandler(event) {
     });
   }
 
-  const editSpans = document.querySelector("#div-btn-span-edit span");
+  const editSpans = document.querySelector("#div-button-span-edit span");
 
   if (editSpans) {
     editSpans.addEventListener("click", function (event) {
-      document.getElementById("div-modal").classList.remove("--hidden");
+      document.getElementById("modal").classList.remove("--hidden");
       var row = recursiveRowSearch(event.target);
     });
   }

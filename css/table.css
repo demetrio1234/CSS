@@ -14,13 +14,23 @@ table td {
   border: 1px solid grey;
 }
 
-table tr {
+thead tr {
   /* Add a bottom border to all table rows */
   border-bottom: 1px solid #ddd;
 }
 
-table tr.header,
-table tr:hover {
+tbody tr:hover {
   /* Add a grey background color to the table header and on hover */
-  background-color: #f1f1f1;
+  background-color: #f2f2f2f2;
+}
+
+tbody {
+  background-color: aliceblue;
+}
+
+tr:nth-child(even) {
+  background: #ccc;
+}
+tr:nth-child(odd) {
+  background: #fff;
 }

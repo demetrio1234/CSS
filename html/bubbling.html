@@ -28,11 +28,6 @@
     <link rel="stylesheet" href="../css/custom-selectable-drop-down.css" />
     <link rel="stylesheet" href="../css/modal.css" />
     <link rel="stylesheet" href="../css/table.css" />
-    <style>
-      .div-modal {
-        top: 300px;
-      }
-    </style>
     <link rel="stylesheet" href="../css/image.css" />
   </head>
   <body>
@@ -47,13 +42,13 @@
       </nav>
     </header>
     <main>
-      <span class="btn-span">Hide navigation menu</span>
-      <span class="btn-span-green">Edit form</span>
-      <span class="btn-span-red">Delete form</span>
+      <span class="button-span">Hide navigation menu</span>
+      <span class="button-span-green">Edit form</span>
+      <span class="button-span-red">Delete form</span>
 
       <div>
         <table>
-          <thead>
+          <thead class="thead">
             <tr>
               <th>A</th>
               <th>B</th>
@@ -65,7 +60,7 @@
           <tfoot></tfoot>
         </table>
       </div>
-      <div class="div-modal --hidden" id="div-modal">
+      <div class="modal --hidden" id="modal">
         <form class="form" id="form" action="">
           <input class="form-input" id="form-input-name" type="text" />
           <label class="form-label" id="form-label-name" for="form-input-name"
@@ -93,7 +88,9 @@
           <label class="form-label" id="form-label-email" for="form-input-email"
             >Email</label
           >
-          <span class="btn-span-save" id="form-input-btn-span-save">Save</span>
+          <span class="button-span-save" id="form-input-button-span-save"
+            >Save</span
+          >
         </form>
       </div>
     </main>

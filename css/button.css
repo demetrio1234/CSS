@@ -1,4 +1,4 @@
-.btn-circle-green {
+.button-circle__--green {
   display: inline-block;
   background-color: green;
   color: aliceblue;
@@ -12,29 +12,29 @@
   bottom: auto;
 }
 
-.btn-square-powderblue {
+.button-square-powderblue {
   background-color: rgba(176, 224, 230, 0.4);
   border-radius: 5px;
   transition: backgound-color 250ms;
 }
 
-.btn-square-powderblue:hover {
+.button-square-powderblue:hover {
   background-color: powderblue;
   cursor: pointer;
 }
 
-.form-input-btn {
+.form-input-button {
   display: flex;
   align-items: center;
   width: 25px;
   height: 25px;
 }
 
-.form-input-btn .btn-circle-green {
+.form-input-button .button-circle__--green {
   width: 23px;
   height: 23px;
 }
 
-.btn-circle-green:hover {
+.button-circle__--green:hover {
   cursor: pointer;
 }
