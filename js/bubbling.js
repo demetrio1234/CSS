@@ -82,13 +82,36 @@ modal.addEventListener("click", (event) => {
       event.preventDefault();
       break;
     case "modal__button-close":
-      form.innerHTML = ''
+      clearModalForm(form);
+      showHide(event.target.parentElement.parentElement);
+      break;
+    case "modal__button-save":
+      let formData = getModalFormData(form);
+      let rowIndex = modal.lastChild.textContent;
+      let updatedRow = updateRow(rowIndex, formData);
+      clearModalForm(form);
       showHide(event.target.parentElement.parentElement);
       break;
     default:
       break;
   }
 });
+
+const updateRow = function (rowIndex, formData) {
+  let allRows = document.getElementById("tbody").getElementsByTagName("tr");
+
+  allRows[rowIndex].cells[0].innerHTML = ``;
+  for (let i = 0; i < formData.categories.length; i++) {
+    allRows[rowIndex].cells[0].innerHTML += `${formData.categories[i]}`;
+    if (i >= 1 && i < formData.categories.length)
+      allRows[rowIndex].cells[0].innerHTML += "/\n";
+  }
+
+  allRows[rowIndex].cells[1].innerHTML = `${formData.href}`;
+  allRows[rowIndex].cells[2].innerHTML = `${formData.description}`;
+  //allRows[index].cells[3].innerHTML = `${formData.timestamp}`;
+  return allRows[rowIndex];
+}
 
 const showHide = function (element) {
   if (element.classList.contains("--hidden")) {
@@ -237,25 +260,47 @@ const resetForm = function () {
   }
 };
 
-const clearFormElements = function (element) {
-  for (let i = 0; i < element.childNodes.length; i++) {
-    const child = element.childNodes[i];
+const clearModalForm = function (form) {
+  let select = form.getElementsByTagName("select");
+  let inputs = form.getElementsByTagName("input");
 
-    // Check if the node is an element
-    if (child.nodeType === 1) {
-      // For input, textarea, and select elements, clear their values
-      if (child.tagName === 'INPUT' || child.tagName === 'TEXTAREA' || child.tagName === 'SELECT') {
-        child.value = '';
-      } else {
-        // For other elements, clear their textContent
-        child.textContent = '';
-      }
+  for (let option of select.arguments.options)
+    if (option.textContent && option.textContent.length > 0)
+      option.textContent = '';
 
-      // Recursively call the function for child elements
-      clearFormElements(child);
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i] !== null && inputs[i].value !== null && inputs[i].value.length > 0) {
+      inputs[i].value = '';
     }
   }
 }
+
+const getModalFormData = function (form) {
+  let formData = {
+    "categories": [],
+    "href": "",
+    "innerText": "",
+    "description": "",
+    "summary": "",
+    "timestamp": ""
+  };
+
+  let select = form.getElementsByTagName("select");
+  let inputs = form.getElementsByTagName("input");
+
+  for (let option of select.arguments.options) {
+    let selected = option.selected;
+    if (selected) {
+      formData.categories.push(option.textContent)
+    }
+  }
+
+  formData.innerText = inputs[1].value;
+  formData.description = inputs[2].value;
+  formData.timestamp = new Date;
+
+  return formData;
+};
 
 const saveToJson = function () {
   let fileName = document.getElementById("form-input-save").value;
@@ -314,9 +359,28 @@ const saveToJson = function () {
 };
 
 const editRow = function (editButton) {
-  showHide(document.querySelector("#modal"));
+  let modal = document.querySelector("#modal");
+  showHide(modal);
+  appendIndex(modal, editButton);
   fillModalForm(editButton);
 };
+
+const appendIndex = function (element, editButton) {
+  let div = editButton.parentElement;
+  let cell = div.parentElement;
+  let specificRow = cell.parentElement;
+
+  let allRows = tbody.getElementsByTagName("tr")
+
+  const rowIndex = Array.from(allRows).indexOf(specificRow);
+
+  const node = document.createElement("div");
+  const textnode = document.createTextNode(`${rowIndex}`);
+  node.appendChild(textnode);
+
+  // Append the "li" node to the list:
+  element.appendChild(node);
+}
 
 const fillModalForm = function (editButton) {
   fillDropDownByPageAndEvent("arguments.json", editButton);
