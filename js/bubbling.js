@@ -115,13 +115,17 @@ const updateRow = function (rowIndex, formData) {
 }
 
 const deleteRow = function (deleteButton) {
-  let div = deleteButton.parentElement;
-  let td = div.parentElement;
-  let specificRow = td.parentElement;
+  let row = findRowByButton(deleteButton);
   let tbody = document.querySelector("tbody");
   let allRows = tbody.getElementsByTagName("tr");
-  let indexRowToDelete = Array.from(allRows).indexOf(specificRow);
+  let indexRowToDelete = Array.from(allRows).indexOf(row);
   allRows[indexRowToDelete].parentNode.removeChild(allRows[indexRowToDelete]);
+}
+
+const findRowByButton = function (button) {
+  let div = button.parentElement;
+  let td = div.parentElement;
+  return td.parentElement;
 }
 
 const showHide = function (element) {
@@ -375,19 +379,19 @@ const saveToJson = function () {
 
 const editRow = function (editButton) {
   let modal = document.querySelector("#modal");
+
   showHide(modal);
   appendIndex(modal, editButton);
   fillModalForm(editButton);
 };
 
-const appendIndex = function (element, editButton) {
-  let div = editButton.parentElement;
-  let cell = div.parentElement;
-  let specificRow = cell.parentElement;
 
+
+const appendIndex = function (element, editButton) {
+  let row = findRowByButton(editButton);
   let allRows = tbody.getElementsByTagName("tr")
 
-  const rowIndex = Array.from(allRows).indexOf(specificRow);
+  const rowIndex = Array.from(allRows).indexOf(row);
 
   const node = document.createElement("div");
   node.setAttribute("class", "--hidden");
@@ -412,9 +416,7 @@ const fillDropDownByPageAndEvent = async function (jsonFileName, editButton) {
   let sectionInnerHtml = '<option value="" id="modal__option-" class=""></option>';
 
   //Get the row to edit and its textContent
-  let div = editButton.parentElement;
-  let cell = div.parentElement;
-  let row = cell.parentElement;
+  let row = findRowByButton(editButton);
 
   //Loop through all arguments and create all options
   for (let argument of arguments) {
