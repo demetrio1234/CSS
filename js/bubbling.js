@@ -51,7 +51,7 @@ main.addEventListener("click", (event) => {
       editRow(event.target);
       break;
     case "button-span-delete":
-      deleteRow();
+      deleteRow(event.target);
       break;
     case "button-span-save":
       saveToJson();
@@ -90,7 +90,7 @@ modal.addEventListener("click", (event) => {
       let rowIndex = modal.lastChild.textContent;
       let updatedRow = updateRow(rowIndex, formData);
       clearModalForm(form);
-      showHide(event.target.parentElement.parentElement);
+      showHide(modal);
       break;
     default:
       break;
@@ -98,7 +98,8 @@ modal.addEventListener("click", (event) => {
 });
 
 const updateRow = function (rowIndex, formData) {
-  let allRows = document.getElementById("tbody").getElementsByTagName("tr");
+  let tbody = document.getElementById("tbody");
+  let allRows = tbody.getElementsByTagName("tr");
 
   allRows[rowIndex].cells[0].innerHTML = ``;
   for (let i = 0; i < formData.categories.length; i++) {
@@ -107,10 +108,20 @@ const updateRow = function (rowIndex, formData) {
       allRows[rowIndex].cells[0].innerHTML += "/\n";
   }
 
-  allRows[rowIndex].cells[1].innerHTML = `${formData.href}`;
+  allRows[rowIndex].cells[1].innerHTML = `<a href="${formData.href}">${formData.href}</a>`;
   allRows[rowIndex].cells[2].innerHTML = `${formData.description}`;
   //allRows[index].cells[3].innerHTML = `${formData.timestamp}`;
   return allRows[rowIndex];
+}
+
+const deleteRow = function (deleteButton) {
+  let div = deleteButton.parentElement;
+  let td = div.parentElement;
+  let specificRow = td.parentElement;
+  let tbody = document.querySelector("tbody");
+  let allRows = tbody.getElementsByTagName("tr");
+  let indexRowToDelete = Array.from(allRows).indexOf(specificRow);
+  allRows[indexRowToDelete].parentNode.removeChild(allRows[indexRowToDelete]);
 }
 
 const showHide = function (element) {
@@ -265,12 +276,15 @@ const clearModalForm = function (form) {
   let inputs = form.getElementsByTagName("input");
 
   for (let option of select.arguments.options)
-    if (option.textContent && option.textContent.length > 0)
+    if (option.textContent && option.textContent.length > 0) {
+      option.selected = false;
       option.textContent = '';
+    }
 
   for (let i = 0; i < inputs.length; i++) {
     if (inputs[i] !== null && inputs[i].value !== null && inputs[i].value.length > 0) {
       inputs[i].value = '';
+      inputs[i].placeholder = '';
     }
   }
 }
@@ -295,8 +309,9 @@ const getModalFormData = function (form) {
     }
   }
 
-  formData.innerText = inputs[1].value;
-  formData.description = inputs[2].value;
+  formData.href = inputs[0].value;
+  formData.innerText = inputs[0].value;
+  formData.description = inputs[1].value;
   formData.timestamp = new Date;
 
   return formData;
@@ -375,6 +390,7 @@ const appendIndex = function (element, editButton) {
   const rowIndex = Array.from(allRows).indexOf(specificRow);
 
   const node = document.createElement("div");
+  node.setAttribute("class", "--hidden");
   const textnode = document.createTextNode(`${rowIndex}`);
   node.appendChild(textnode);
 
