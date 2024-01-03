@@ -380,6 +380,9 @@ const saveToJson = function () {
 const editRow = function (editButton) {
   let modal = document.querySelector("#modal");
 
+  modal.style.top = Math.ceil(editButton.getBoundingClientRect().y - 13).toString() + "px";
+  modal.style.left = Math.ceil(editButton.getBoundingClientRect().x - 500).toString() + "px";
+  modal.style.position = "absolute";
   showHide(modal);
   appendIndex(modal, editButton);
   fillModalForm(editButton);
