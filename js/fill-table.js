@@ -22,8 +22,14 @@ function fillTable(links) {
         //Add link
         let link = links[i].href;
         let text = links[i].href;
+        if (text.length > 50) {
+          text = text.substring(0, 50) + "...";
+        }
+
         let cellLink = row.insertCell(1);
         cellLink.innerHTML = `<a href="${link}">${text}</a>`;
+
+        //cellLink.style.overflowWrap = "break-word";
 
         //Add description
         let cellDescription = row.insertCell(2);
