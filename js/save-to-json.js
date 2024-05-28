@@ -17,10 +17,16 @@ function saveToJson() {
   }
 
   let links = [
-    { categories: [], href: "", innerText: "", description: "", summary: "" },
+    {
+      categories: [],
+      href: "",
+      innerText: "",
+      description: "",
+      summary: ""
+    },
   ];
 
-  for (let i = 1; i < rows.length; i++) {
+  for (let i = 0; i < rows.length; i++) {
     let categories = rows[i].cells[0].innerText.split("/");
 
     let temp = {
@@ -42,6 +48,9 @@ function saveToJson() {
         temp.description = rows[i].cells[j].innerText;
       }
     }
+
+    if (i === links.length)
+      links.splice(0, 1);
 
     links.push(temp);
   }

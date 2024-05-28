@@ -364,6 +364,9 @@ const saveToJson = function () {
       }
     }
 
+    if (i === rows.length - 1)
+      links.splice(0, 1);
+
     links.push(tempRow);
   }
 
