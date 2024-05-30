@@ -2,7 +2,7 @@
 <html>
   <head>
     <style>
-      body {
+      .body {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -17,7 +17,7 @@
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
-      .login-panel input {
+      .login-panel__input {
         display: block;
         /* width: 100%; */
         margin-bottom: 10px;
@@ -26,7 +26,7 @@
         border: 1px solid #ddd;
         border-radius: 5px;
       }
-      .login-panel button {
+      .login-panel__button {
         display: block;
         width: 100%;
         padding: 10px;
@@ -37,19 +37,45 @@
         border-radius: 5px;
         cursor: pointer;
       }
+      .login-panel__input[type="checkbox"] {
+        display: inline-block;
+        width: auto;
+        margin-right: 5px;
+      }
+      .login-panel__label {
+        display: inline-block;
+        font-size: 14px;
+        color: #333;
+      }
     </style>
   </head>
-  <body>
+  <body class="body">
     <div class="login-panel">
       <form action="javascript:void(0);" onsubmit="tryLogin()">
-        <input type="email" name="email" placeholder="Email" required />
         <input
+          class="login-panel__input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+        <input
+          class="login-panel__input"
           type="password"
           name="password"
           placeholder="Password"
           required
         />
-        <button type="submit">Login</button>
+        <input
+          class="login-panel__input"
+          type="checkbox"
+          name="remember-credentials"
+          id="remember-credentials"
+        />
+        <label for="remember-credentials" class="login-panel__label"
+          >Remember credentials</label
+        >
+        <button class="login-panel__button" type="submit">Login</button>
       </form>
     </div>
     <script src="../js/login.js"></script>
