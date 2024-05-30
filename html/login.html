@@ -59,21 +59,40 @@
   <body class="body">
     <div class="login-panel">
       <form action="javascript:void(0);" id="form" onsubmit="tryLogin()">
-        <label for="form" class="login-panel__label-title" id="form-title"
-          >Login</label
-        >
+        <label class="login-panel__label-title" id="form-title">Login</label>
+        <input
+          class="login-panel__input"
+          type="text"
+          name="username"
+          placeholder="Name"
+          required
+          minlength="6"
+          style="display: none"
+          autocomplete="on"
+        />
         <input
           class="login-panel__input"
           type="email"
           name="email"
           placeholder="Email"
           required
+          autocomplete="on"
         />
         <input
           class="login-panel__input"
           type="password"
           name="password"
           placeholder="Password"
+          minlength="10"
+          required
+        />
+        <input
+          class="login-panel__input"
+          type="password"
+          name="repeated-password"
+          placeholder="Repeat your Password"
+          style="display: none"
+          minlength="10"
           required
         />
         <input
@@ -81,8 +100,12 @@
           type="checkbox"
           name="remember-credentials"
           id="remember-credentials"
+          style="display: inline-block"
         />
-        <label for="remember-credentials" class="login-panel__label"
+        <label
+          for="remember-credentials"
+          class="login-panel__label"
+          name="remember-credentials-label"
           >Remember credentials</label
         >
         <button class="login-panel__button" type="submit">Login</button>
