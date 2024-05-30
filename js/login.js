@@ -1,11 +1,41 @@
 function tryLogin() {
-    const email = document.querySelector('input[name="email"]').value;
-    const password = document.querySelector('input[name="password"]').value;
-    const cb_register = document.querySelector('input[name="show-register-new-user-checkbox"]').checked;
+    // Get the email and password input fields
+    const usernameInput = document.querySelector('input[name="username"]');
+    const emailInput = document.querySelector('input[name="email"]');
+    const passwordInput = document.querySelector('input[name="password"]');
+    const repeatPasswordInput = document.querySelector('input[name="repeated-password"]');
+    const email = emailInput.value;
+    const username = usernameInput.value;
+    const password = passwordInput.value;
+    const repeatedPassword = repeatPasswordInput.value;
+    //const loginForm = document.querySelector('#form'); // assuming your form has an id of 'loginForm'
+
+    const cb_register = document.querySelector('input[name="show-register-new-user-checkbox"]').value;
     if (!email || !password) {
-        alert("Please fill in all fields");
+
+        if (!username)
+            usernameInput.classList.add('empty-field');
+
+        if (!email)
+            emailInput.classList.add('empty-field');
+
+        if (!password)
+            passwordInput.classList.add('empty-field');
+
+        if (!repeatedPassword)
+            repeatPasswordInput.classList.add('empty-field');
+
+        // Remove the shake class after the animation completes
+        setTimeout(() => {
+            usernameInput.classList.remove('empty-field');
+            emailInput.classList.remove('empty-field');
+            passwordInput.classList.remove('empty-field');
+            repeatPasswordInput.classList.remove('empty-field');
+        }, 2000);
+
         return;
     }
+
     const data = {
         email: email,
         password: password,

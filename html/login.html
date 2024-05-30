@@ -2,6 +2,24 @@
 <html>
   <head>
     <style>
+      @keyframes shake {
+        0% {
+          margin-left: 0px;
+        }
+        25% {
+          margin-left: 10px;
+        }
+        50% {
+          margin-left: 0px;
+        }
+        75% {
+          margin-left: -10px;
+        }
+        100% {
+          margin-left: 0px;
+        }
+      }
+
       .body {
         display: flex;
         justify-content: center;
@@ -54,6 +72,14 @@
         color: #333;
         margin-bottom: 20px;
       }
+      .shake {
+        animation: shake 0.25s;
+        animation-iteration-count: 4;
+      }
+      .empty-field {
+        background-color: #ffcccc; /* gentle red */
+        border: 1px solid #ff0000; /* red */
+      }
     </style>
   </head>
   <body class="body">
@@ -65,8 +91,6 @@
           type="text"
           name="username"
           placeholder="Name"
-          required
-          minlength="6"
           style="display: none"
           autocomplete="on"
         />
@@ -75,7 +99,6 @@
           type="email"
           name="email"
           placeholder="Email"
-          required
           autocomplete="on"
         />
         <input
@@ -83,8 +106,6 @@
           type="password"
           name="password"
           placeholder="Password"
-          minlength="10"
-          required
         />
         <input
           class="login-panel__input"
@@ -92,8 +113,6 @@
           name="repeated-password"
           placeholder="Repeat your Password"
           style="display: none"
-          minlength="10"
-          required
         />
         <input
           class="login-panel__input"
@@ -108,7 +127,9 @@
           name="remember-credentials-label"
           >Remember credentials</label
         >
-        <button class="login-panel__button" type="submit">Login</button>
+        <button class="login-panel__button" type="submit" onclick="tryLogin()">
+          Login
+        </button>
         <hr />
         <input
           class="login-panel__input"
