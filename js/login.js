@@ -9,8 +9,8 @@ function tryLogin() {
     const password = passwordInput.value;
     const repeatedPassword = repeatPasswordInput.value;
     //const loginForm = document.querySelector('#form'); // assuming your form has an id of 'loginForm'
+    const cb_register = document.querySelector('input[name="show-register-new-user-checkbox"]').checked;
 
-    const cb_register = document.querySelector('input[name="show-register-new-user-checkbox"]').value;
     if (!email || !password) {
 
         if (!username)
@@ -36,10 +36,20 @@ function tryLogin() {
         return;
     }
 
-    const data = {
-        email: email,
-        password: password,
-    };
+    let data = null;
+
+    if (cb_register) {
+        data = {
+            name: username,
+            email: email,
+            password: password,
+        };
+    } else {
+        data = {
+            email: email,
+            password: password,
+        };
+    }
 
     // Endpoint URL
     var url = '';
@@ -49,6 +59,8 @@ function tryLogin() {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            mode: 'cors',
+            credentials: 'include'
         },
         body: JSON.stringify(data),
     };
