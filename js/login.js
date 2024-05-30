@@ -6,18 +6,13 @@ function tryLogin() {
         alert("Please fill in all fields");
         return;
     }
-
-    if (cb_register) {
-        document.querySelector('label[id="form-title"]').textContent = 'Register';
-    }
-
     const data = {
         email: email,
         password: password,
     };
 
     // Endpoint URL
-    const url = "https://localhost:7261/api/login";
+    var url = '';
 
     // Fetch options
     const fetchOptions = {
@@ -27,6 +22,11 @@ function tryLogin() {
         },
         body: JSON.stringify(data),
     };
+
+    if (cb_register)
+        url = "https://localhost:7261/api/users/register";
+    else
+        url = "https://localhost:7261/api/login";
 
     // Make the HTTP Api request
     fetch(url, fetchOptions)
