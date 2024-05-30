@@ -47,11 +47,21 @@
         font-size: 14px;
         color: #333;
       }
+      .login-panel__label-title {
+        display: flex;
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+      }
     </style>
   </head>
   <body class="body">
     <div class="login-panel">
-      <form action="javascript:void(0);" onsubmit="tryLogin()">
+      <form action="javascript:void(0);" id="form" onsubmit="tryLogin()">
+        <label for="form" class="login-panel__label-title" id="form-title"
+          >Login</label
+        >
         <input
           class="login-panel__input"
           type="email"
@@ -76,8 +86,26 @@
           >Remember credentials</label
         >
         <button class="login-panel__button" type="submit">Login</button>
+        <hr />
+        <input
+          class="login-panel__input"
+          type="checkbox"
+          name="show-register-new-user-checkbox"
+          id="show-register-new-user-checkbox"
+          onchange="changeFormTitle()"
+        />
+        <!-- 
+         -->
+
+        <label for="show-register-new-user-checkbox" class="login-panel__label"
+          >Register new User</label
+        >
       </form>
     </div>
     <script src="../js/login.js"></script>
+    <script src="../js/remember-credentials.js"></script>
+    <script src="../js/change-form-title.js"></script>
+
+    <!-- <script src="../js/register-new-user.js"></script> -->
   </body>
 </html>

@@ -1,9 +1,14 @@
 function tryLogin() {
     const email = document.querySelector('input[name="email"]').value;
     const password = document.querySelector('input[name="password"]').value;
+    const cb_register = document.querySelector('input[name="show-register-new-user-checkbox"]').checked;
     if (!email || !password) {
         alert("Please fill in all fields");
         return;
+    }
+
+    if (cb_register) {
+        document.querySelector('label[id="form-title"]').textContent = 'Register';
     }
 
     const data = {
