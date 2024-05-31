@@ -101,9 +101,22 @@
             </div>
           );
         }
-      const divLogin = document.getElementById('div-login');
+
+        function App() {
+          const title = 'Demetrio';
+          return (
+            <div>
+                <Title title={title} />
+              <Wrapper />
+            </div>
+            );
+        }
+        function Title({ title }) {
+            return title ? title : <h1>This is the title</h1>;
+        }
+        const divLogin = document.getElementById('div-login');
       const root = ReactDOM.createRoot(divLogin);
-      root.render(<Wrapper />);
+      root.render(<App />);
     </script>
 
     <!--
