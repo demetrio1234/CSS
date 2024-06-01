@@ -123,10 +123,15 @@
 
         function Button({ children, color }) {
 
+          function handleClick() {
+            console.log('Button clicked');
+          }
+
           return (
             <>
             <button
               style={{ backgroundColor: color, borderRadius: '5px', padding: '10px', fontSize: '16px', border: 'none', cursor: 'pointer'}}
+              onClick={ handleClick }
               >{children}</button>
             </>
           );
