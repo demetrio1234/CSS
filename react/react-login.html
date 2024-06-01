@@ -112,12 +112,26 @@
             );
         }
         function Title({ title }) {
+
           return (
-          title
-          ? (<h1>{title}</h1>)
-          : (<h1>This is the title</h1>)
+          <>
+            <h1>{title ? title : 'This is the title'}</h1>
+            <Button children='Press' color='grey' />
+          </>
           );
         }
+
+        function Button({ children, color }) {
+
+          return (
+            <>
+            <button
+              style={{ backgroundColor: color, borderRadius: '5px'}}
+              >{children}</button>
+            </>
+          );
+        }
+
         const divLogin = document.getElementById('div-login');
       const root = ReactDOM.createRoot(divLogin);
       root.render(<App />);
