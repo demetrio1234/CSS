@@ -116,15 +116,16 @@
           return (
           <>
             <h1>{title ? title : 'This is the title'}</h1>
-            <Button children='Press' color='grey' />
+            <Button children='Increase likes' color='grey' />
           </>
           );
         }
 
         function Button({ children, color }) {
+          const [likes, setLikes] = React.useState(0);
 
           function handleClick() {
-            console.log('Button clicked');
+            setLikes(likes + 1);
           }
 
           return (
@@ -133,6 +134,7 @@
               style={{ backgroundColor: color, borderRadius: '5px', padding: '10px', fontSize: '16px', border: 'none', cursor: 'pointer'}}
               onClick={ handleClick }
               >{children}</button>
+              <p style={{ display: 'inline-block', marginLeft : '5px' }}>{likes} likes</p>
             </>
           );
         }
