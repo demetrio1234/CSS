@@ -113,28 +113,36 @@
         }
         function Title({ title }) {
 
+          const [likes, setLikes] = React.useState(0);
+
+          function handledClick() {
+            console.log('clicked');
+          };
+
+          function increaseLikes() {
+            setLikes(likes + 1);
+          }
+          function decreaseLikes() {
+            setLikes(likes - 1);
+          }
+
           return (
           <>
             <h1>{title ? title : 'This is the title'}</h1>
-            <Button children='Increase likes' color='grey' />
+            <Button children='+' color='green' onClick={ increaseLikes } />
+            <p style={{ display: 'inline-block', marginLeft : '5px' }}>{likes} likes</p>
+            <Button children='-' color='red' onClick={ decreaseLikes }/>
           </>
           );
         }
 
-        function Button({ children, color }) {
-          const [likes, setLikes] = React.useState(0);
-
-          function handleClick() {
-            setLikes(likes + 1);
-          }
+        function Button({ children, color, onClick }) {
 
           return (
             <>
-            <button
+            <button onClick={onClick}
               style={{ backgroundColor: color, borderRadius: '5px', padding: '10px', fontSize: '16px', border: 'none', cursor: 'pointer'}}
-              onClick={ handleClick }
               >{children}</button>
-              <p style={{ display: 'inline-block', marginLeft : '5px' }}>{likes} likes</p>
             </>
           );
         }
