@@ -103,16 +103,20 @@
         }
 
         function App() {
-          const title = 'Demetrio';
+          const title = 'test';
           return (
             <div>
-                <Title title={title} />
+                <Title className="flex-row" title={title}/>
               <Wrapper />
             </div>
             );
         }
         function Title({ title }) {
-            return title ? title : <h1>This is the title</h1>;
+          return (
+          title
+          ? (<h1>{title}</h1>)
+          : (<h1>This is the title</h1>)
+          );
         }
         const divLogin = document.getElementById('div-login');
       const root = ReactDOM.createRoot(divLogin);
