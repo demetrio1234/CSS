@@ -37,6 +37,8 @@ function tryLogin() {
     }
 
     let data = null;
+    // Endpoint URL
+    let url = '';
 
     if (cb_register) {
         data = {
@@ -44,15 +46,16 @@ function tryLogin() {
             email: email,
             password: password,
         };
+
+        url = "https://localhost:7261/api/users/register";
     } else {
         data = {
             email: email,
             password: password,
         };
-    }
 
-    // Endpoint URL
-    var url = '';
+        url = "https://localhost:7261/api/login";
+    }
 
     // Fetch options
     const fetchOptions = {
@@ -64,11 +67,6 @@ function tryLogin() {
         },
         body: JSON.stringify(data),
     };
-
-    if (cb_register)
-        url = "https://localhost:7261/api/users/register";
-    else
-        url = "https://localhost:7261/api/login";
 
     // Make the HTTP Api request
     fetch(url, fetchOptions)

@@ -67,10 +67,13 @@
       }
       .login-panel__label-title {
         display: flex;
+        flex-direction: column;
         font-size: 24px;
         font-weight: bold;
         color: #333;
         margin-bottom: 20px;
+        text-align: center;
+        align-content: center;
       }
       .shake {
         animation: shake 0.25s;
@@ -127,7 +130,12 @@
           name="remember-credentials-label"
           >Remember credentials</label
         >
-        <button class="login-panel__button" type="submit" onclick="tryLogin()">
+        <button
+          class="login-panel__button"
+          type="submit"
+          onclick="SubmitEvent"
+          name="submit_button"
+        >
           Login
         </button>
         <hr />
