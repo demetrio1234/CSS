@@ -1,9 +1,16 @@
 [
   {
+    "categories": ["JSON"],
+    "href": "https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage",
+    "innerText": "https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage",
+    "description": "EditDelete",
+    "summary": ""
+  },
+  {
     "categories": ["HTML ", "\nCSS"],
     "href": "https://stackoverflow.com/questions/22603451/truncate-text-in-ul-li-anchor-tag",
-    "innerText": "https://stackoverflow.com/questions/22603451/truncate-text-in-ul-li-anchor-tag",
-    "description": "EditDelete",
+    "innerText": "https://stackoverflow.com/questions/22603451/trunc...",
+    "description": "Edit\nDelete",
     "summary": ""
   },
   {

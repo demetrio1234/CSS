@@ -1,24 +1,29 @@
 {
-    "arguments": [
-        {
-            "id": 0,
-            "name": "HTML",
-            "description": ""
-        },
-        {
-            "id": 1,
-            "name": "CSS",
-            "description": ""
-        },
-        {
-            "id": 2,
-            "name": "JS",
-            "description": ""
-        },
-        {
-            "id": 3,
-            "name": "JSON",
-            "description": ""
-        }
-    ]
+  "arguments": [
+    {
+      "id": 0,
+      "name": "HTML",
+      "description": ""
+    },
+    {
+      "id": 1,
+      "name": "CSS",
+      "description": ""
+    },
+    {
+      "id": 2,
+      "name": "JS",
+      "description": ""
+    },
+    {
+      "id": 3,
+      "name": "JSON",
+      "description": ""
+    },
+    {
+      "id": 4,
+      "name": "VSC",
+      "description": "Version Control System"
+    }
+  ]
 }
