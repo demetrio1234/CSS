@@ -38,3 +38,5 @@ next-env.d.ts
 #lingui
 /src/translations/eng/eng.js
 /src/translations/deu/deu.js
+*.gz
+react/.next/
