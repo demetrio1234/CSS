@@ -391,8 +391,6 @@ const editRow = function (editButton) {
   fillModalForm(editButton);
 };
 
-
-
 const appendIndex = function (element, editButton) {
   let row = findRowByButton(editButton);
   let allRows = tbody.getElementsByTagName("tr")

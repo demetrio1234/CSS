@@ -1,49 +1,69 @@
-function fillTable(links) {
-  if (links !== undefined) {
-    if (links) {
-      let tbody = document.querySelector("tbody");
+function fillTable(jsonData) {
+  if (jsonData) {
 
-      for (let i = 0; i < links.length; i++) {
-        //Add a new row
-        var row = tbody.insertRow(-1);
+    arrayOfObjects = jsonData["insertions"]
+      ? fillInsertionsTable(jsonData["insertions"])
+      : fillHowTosTable(jsonData);
+  }
+  ddItemsShown = false;
+}
 
-        //Add categories
-        let categories = { categories: "" };
-        for (let j = 0; j < links[i].categories.length; j++) {
-          categories.categories += links[i].categories[j].toString();
-          if (j < links[i].categories.length - 1) {
-            categories.categories += "/";
-          }
-        }
-        let cellArgument = row.insertCell(0);
+function fillInsertionsTable(arrayOfObjects) {
+  if (arrayOfObjects) {
+    let tbody = document.querySelector("tbody");
 
-        cellArgument.innerText = categories.categories;
+    arrayOfObjects.forEach(insertion => {
+      const row = document.createElement('tr');
 
-        //Add link
-        let link = links[i].href;
-        let text = links[i].href;
-        if (text.length > 50) {
-          text = text.substring(0, 50) + "...";
-        }
+      row.innerHTML = `
+          <td>${insertion.insertionsDate}</td>
+          <td><a href=${insertion.linkToInsertion}>${insertion.insertionsTitle}</a></td>
+          <td>${insertion.position.join(', ')}</td>
+          <td>${insertion.jobPercentage}</td>
+          <td>${insertion.jobStartingDate}</td>
+          <td>${insertion.companyName}</td>
+          <td>${insertion.jobFirstContactPersonName}</td>
+          <td>${insertion.jobFirstContactPersonCompanyPosition}</td>
+          <td>${insertion.jobFirstContactPersonEmail}</td>
+          <td>${insertion.jobFirstContactPersonPhoneNumber}</td>
+          <td>${insertion.addedTimestamp}</td>
+          <td>${insertion.modifiedTimestamp}</td>
+      `;
+      /*
+      <td>${insertion.jobDescription.jobDescription}</td>
+          <td>${insertion.jobDescription.jobAttendantResposibilities.join(', ')}</td>
+          <td>${insertion.jobDescription.jobAttendantSkills.join(', ')}</td>
+          <td>${insertion.jobDescription.employerBenefits.join(', ')}</td>
+      */
+      tbody.appendChild(row);
+    });
+  }
+}
 
-        let cellLink = row.insertCell(1);
-        cellLink.innerHTML = `<a href="${link}">${text}</a>`;
+function fillHowTosTable(arrayOfObjects) {
+  if (arrayOfObjects) {
+    let tbody = document.querySelector("tbody");
+    let i = 1;
+    arrayOfObjects.forEach(howTo => {
+      const row = document.createElement('tr');
 
-        //cellLink.style.overflowWrap = "break-word";
+      howTo.href.length > 50 ? howTo.href.substring(0, 50) + "..." : howTo.href;
 
-        //Add description
-        let cellDescription = row.insertCell(2);
-        cellDescription.innerText = links[i].description;
+      row.innerHTML = `
+          <td>${howTo.categories.join(', ')}</td>
+          <td><a href=${howTo.href}>${howTo.href.length > 50 ? howTo.href.substring(0, 50) + "..." : howTo.href}</a></td>
+          <td>${howTo.description}</td>
+          <td>
+            <div class="--flex-row">
+              <span id="button-span-edit-${i}" class="button-span-green ">Edit</span>
+              <span id="button-span-delete-${i}" class="button-span-red ">Delete</span>
+            </div>
+          </td>
+            `;
 
-        //Add Buttons
-        let cellButtons = row.insertCell(3);
-        cellButtons.innerHTML = `<div class="--flex-column">
-                                   <span id="button-span-edit-${i}" class="button-span-green --margin-b-3">Edit</span>
-                                   <span id="button-span-delete-${i}" class="button-span-red --margin-t-3">Delete</span>
-                                 </div>`;
-      }
-    }
+      i++;
 
-    ddItemsShown = false;
+      tbody.appendChild(row);
+    });
   }
 }

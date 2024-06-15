@@ -245,7 +245,11 @@ li {
 }
 .--flex-row {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 5px;
 }
+
 .--justify-content-center {
   justify-content: center;
 }

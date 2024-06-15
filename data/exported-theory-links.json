@@ -1,1 +1,9 @@
-[{"categories":["HTML ","\nJSON"],"href":"http://127.0.0.1:5500/html/test","innerText":"test","description":"test","summary":""}]
+[
+  {
+    "categories": ["HTML ", "\nJSON"],
+    "href": "http://127.0.0.1:5500/html/test",
+    "innerText": "test",
+    "description": "test",
+    "summary": ""
+  }
+]

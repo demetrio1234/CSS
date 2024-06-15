@@ -1,9 +1,23 @@
 [
   {
+    "categories": ["VSC"],
+    "href": "https://stackoverflow.com/questions/987142/make-gitignore-ignore-everything-except-a-few-files",
+    "innerText": "https://stackoverflow.com/questions/987142/make-gitignore-ignore-everything-except-a-few-files",
+    "description": "EditDelete",
+    "summary": ""
+  },
+  {
+    "categories": ["JSON"],
+    "href": "https://stackoverflow.com/questions/5543490/json-naming-convention-snake-case-camelcase-or-pascalcase",
+    "innerText": "https://stackoverflow.com/questions/5543490/json-n...",
+    "description": "Edit\nDelete",
+    "summary": ""
+  },
+  {
     "categories": ["JSON"],
     "href": "https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage",
-    "innerText": "https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage",
-    "description": "EditDelete",
+    "innerText": "https://docs.github.com/en/repositories/working-wi...",
+    "description": "Edit\nDelete",
     "summary": ""
   },
   {
