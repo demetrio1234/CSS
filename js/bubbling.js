@@ -75,27 +75,28 @@ header.addEventListener("keyup", (event) => {
   }
 });
 
-const modal = document.querySelector("#modal")
-modal.addEventListener("click", (event) => {
-  switch (event.target.id) {
-    case "modal__select-arguments":
-      event.preventDefault();
-      break;
-    case "modal__button-close":
-      clearModalForm(form);
-      showHide(event.target.parentElement.parentElement);
-      break;
-    case "modal__button-save":
-      let formData = getModalFormData(form);
-      let rowIndex = modal.lastChild.textContent;
-      let updatedRow = updateRow(rowIndex, formData);
-      clearModalForm(form);
-      showHide(modal);
-      break;
-    default:
-      break;
-  }
-});
+const modal = document.querySelector("#modal");
+if (modal)
+  modal.addEventListener("click", (event) => {
+    switch (event.target.id) {
+      case "modal__select-arguments":
+        event.preventDefault();
+        break;
+      case "modal__button-close":
+        clearModalForm(form);
+        showHide(event.target.parentElement.parentElement);
+        break;
+      case "modal__button-save":
+        let formData = getModalFormData(form);
+        let rowIndex = modal.lastChild.textContent;
+        let updatedRow = updateRow(rowIndex, formData);
+        clearModalForm(form);
+        showHide(modal);
+        break;
+      default:
+        break;
+    }
+  });
 
 const updateRow = function (rowIndex, formData) {
   let tbody = document.getElementById("tbody");
@@ -168,22 +169,43 @@ const showDropDownItems = async function () {
 
   let item = { elements: "" };
 
-  const response = await fetch("../data/arguments.json");
-  const arguments = await response.json();
+  var path = window.location.pathname.split("/").pop().split(".")[0]
+  var page = path.split("/").pop().replace(".html", "");
+  let url = window.location.origin + `/data/${page}-arguments.json`;
 
-  for (let i = 0; i < arguments.arguments.length; i++) {
-    let tempName = arguments.arguments[i].name;
+  var arguments = [];
+
+  // Fetch the JSON data from the file
+  await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Access the "arguments" array
+      arguments = data.arguments;
+    })
+    .catch(error => console.error('Error fetching the JSON data:', error));
+
+  let i = 0;
+  arguments.forEach(argument => {
+    let tempName = argument.name;
 
     item.elements += `<li class="--flex-row" id="dropdown__item_${i}" style="text-align:left;">
                         <input
-                          class=""
+                          class="--min-height-25"
                           type="checkbox"
                           name="${tempName}"
                           id="input-${tempName + "_" + i}"
-                        />&nbsp;
-                        <label class="--inline-block --min-width-50" for="input-${tempName + "_" + i}">${tempName}</label>
+                        />&nbsp;&nbsp;
+                        <label
+                          class="--inline-block --min-width-150 --min-height-25" for="input-${tempName + "_" + i}">${tempName}</label>
                       </li>`;
-  }
+    i++;
+  });
 
   dropDownArrow.classList.add("arrow__direction--down");
   dropDownSpan.style.display = "block";
@@ -407,11 +429,13 @@ const appendIndex = function (element, editButton) {
 }
 
 const fillModalForm = function (editButton) {
-  fillDropDownByPageAndEvent("arguments.json", editButton);
+  let page = window.location.pathname.split("/").pop().replace(".html", "");
+
+  fillDropDownByPageAndEvent(`${page}-arguments.json`, editButton);
 };
 
 const fillDropDownByPageAndEvent = async function (jsonFileName, editButton) {
-  //Read the arguments from the file arguments.json
+  //Read the arguments from the relative file arguments.json
   const response = await fetch(`../data/${jsonFileName}`);
   const argumentsObject = await response.json();
   const arguments = argumentsObject.arguments;

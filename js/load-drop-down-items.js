@@ -18,23 +18,21 @@ const hideArguments = function (dropDownUl, dropDownButton) {
 
   dropDownUl.innerHTML = "";
   dropDownButton.innerText = "Show Arguments";
-  document.getElementById("dropdown__span").style.display = "none";
+  document.getElementById("dropdown__span").classList.add("--hide");
 };
 
 const showArguments = async function (dropDownUl, dropDownButton) {
   let item = { elements: "" };
 
-  const response = await fetch("../data/arguments.json");
+  var path = window.location.pathname;
+  var page = path.split("/").pop();
+  console.log(page);
+
+  const response = await fetch(`../data/${page}.json`);
   const arguments = await response.json();
 
   for (let i = 0; i < arguments.arguments.length; i++) {
     let tempName = arguments.arguments[i].name;
-    /*
-    item.elements += `<li class="inserted-list-item" id="inserted-list-item">
-                        <input class="custom-checkbox" type="checkbox" name="${tempName}" id="${tempName}" style="left:50px"/>
-                        <label for="${tempName}" class="custom-label" name="${tempName}" value="${tempName}" style="left:50px">${tempName}</label>
-                      </li>`;
-    */
     item.elements += `<li class="--width-fit-content --bg-rebeccapurple" id="dropdown__item">
                         <input
                           class="--width-fit-content"
@@ -49,6 +47,7 @@ const showArguments = async function (dropDownUl, dropDownButton) {
   dropDownUl.innerHTML = `${item.elements}`;
 
   dropDownButton.innerText = "Hide Arguments";
+  document.getElementById("dropdown__span").classList.remove("--hide");
   document.getElementById("dropdown__span").style.display = "block";
 
   document.getElementById("dropdown__span").style.top =

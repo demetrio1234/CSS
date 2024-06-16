@@ -32,7 +32,145 @@
     <link rel="stylesheet" href="../css/custom-selectable-drop-down.css" />
   </head>
   <body>
+    <header>
+      <div
+        class="navbar --bg-antiquewhite box-shadow-small-rebeccapurple-hover --border-bottom-l-radius-5 --border-bottom-r-radius-5"
+      >
+        <nav class="navbar__nav--horizontal">
+          <a href="../index.html"
+            ><img
+              class="navbar__logo--ms"
+              src="https://upload.wikimedia.org/wikipedia/commons/4/4f/SVG_Logo.svg"
+              alt="A logo of the web page"
+          /></a>
+          <ul class="navbar__ul--horizontal">
+            <li class="navbar__li">
+              <a class="a--underline-rebeccapurple" href="../index.html"
+                >Home</a
+              >
+            </li>
+            <li class="navbar__li">
+              <a class="a--underline-rebeccapurple" href="../html/how-to-s.html"
+                >"How To"s</a
+              >
+            </li>
+            <li class="navbar__li">
+              <a
+                class="a--underline-rebeccapurple"
+                href="../html/gpt-results.html"
+                >Gpt-Results</a
+              >
+            </li>
+          </ul>
+          <form class="navbar__form--horizontal" action="">
+            <div class="form__div--flex">
+              <img
+                class="form__search-img--small --margin-r-5"
+                src="../assets/search-static.png"
+                alt=""
+              />
+              <input
+                class="form__input--horizontal --border-radius-5 --border-5-red"
+                id="nav__input-search"
+                placeholder="search..."
+                type="text"
+              />
+            </div>
+          </form>
+          <ul class="navbar__ul--horizontal">
+            <li class="navbar__li">
+              <a class="a--underline-rebeccapurple" href="../html/tools.html"
+                >Tools</a
+              >
+            </li>
+            <li class="navbar__li">
+              <a class="a--underline-rebeccapurple" href="../html/theory.html"
+                >Theory</a
+              >
+            </li>
+            <li class="navbar__li">
+              <a class="a--underline-rebeccapurple" href="#">Jobs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <main>
+      <div
+        class="--flex-row"
+        id="dropdown__div--flex-row"
+        style="justify-content: center; margin-top: 0.5rem"
+      >
+        <div class="dropdown" id="dropdown__div">
+          <button
+            class="dropdown__button --bg-rebeccapurple --border-radius-5"
+            id="dropdown__button"
+            type="menu"
+          >
+            Menu
+            <i
+              class="arrow arrow__direction--righ arrow--aliceblue --rotate-down"
+              id="dropdown__arrow"
+            ></i>
+          </button>
+          <span
+            id="dropdown__span"
+            class="--border-radius-5 --width-200 --padding-10"
+          >
+            <ul
+              class="--flex-column --width-fit-content --margin-left-auto --margin-right-auto"
+              id="dropdown__ul"
+            ></ul>
+          </span>
+        </div>
+
+        <form class="form" action="" id="form-new-link">
+          <input
+            type="text"
+            id="input-link"
+            class="newlink__input --border-radius-5"
+            placeholder="Link"
+          />
+
+          <input
+            type="text"
+            id="input-topic"
+            class="newlink__input --border-radius-5"
+            placeholder="Topic"
+          />
+
+          <button
+            class="dropdown__button --bg-rebeccapurple --border-radius-5"
+            value="Add"
+            tabindex="0"
+            id="button-add-new-link"
+          >
+            Add new Link
+          </button>
+        </form>
+
+        <form class="form" action="" id="form-save">
+          <input
+            class="newlink__input --border-radius-5"
+            type="text"
+            id="form-input-save"
+            name="form-input-save"
+            placeholder="Filename"
+          />
+          <button
+            class="newlink__input --border-radius-5 --bg-green"
+            id="button-span-save"
+          >
+            Save to JSON
+          </button>
+          <button
+            class="newlink__input --border-radius-5 --bg-azure"
+            id="button-span-reload"
+          >
+            Reload from JSON
+          </button>
+        </form>
+      </div>
       <div class="table --flex-row">
         <table>
           <thead class="thead">
@@ -57,6 +195,10 @@
     </main>
     <script src="../js/fill-table.js"></script>
     <script src="../js/fetch-data-from-file.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/barspace-clicked.js"></script>
+    <script src="../js/open-modal.js"></script>
+    <script src="../js/bubbling.js"></script>
   </body>
 </html>
 

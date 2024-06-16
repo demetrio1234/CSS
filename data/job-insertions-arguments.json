@@ -1,0 +1,29 @@
+{
+  "arguments": [
+    {
+      "id": 0,
+      "name": "C#",
+      "description": ""
+    },
+    {
+      "id": 1,
+      "name": "ASP.NET",
+      "description": ""
+    },
+    {
+      "id": 2,
+      "name": "JS",
+      "description": ""
+    },
+    {
+      "id": 3,
+      "name": "REACT",
+      "description": ""
+    },
+    {
+      "id": 4,
+      "name": "POSTGRESQL",
+      "description": "SQL Database"
+    }
+  ]
+}
