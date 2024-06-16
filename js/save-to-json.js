@@ -16,15 +16,37 @@ function saveToJson() {
     return;
   }
 
-  let links = [
-    {
-      categories: [],
-      href: "",
-      innerText: "",
-      description: "",
-      summary: ""
-    },
-  ];
+  let links = undefined;
+
+  if (window.location.pathname.split("/").pop() === "how-to-s.html")
+    links = [
+      {
+        categories: [],
+        href: "",
+        innerText: "",
+        description: "",
+        summary: ""
+      },
+    ];
+  else
+    links = [
+      {
+        insertionsDate: "",
+        insertionsTitle: "",
+        linkToInsertion: "",
+        position: [],
+        jobPercentage: [],
+        jobStartingDate: "",
+        companyName: "",
+        jobDescription: {
+          jobDescription: "",
+          jobAttendantResposibilities: [],
+          jobAttendantSkills: [],
+          employerBenefits: []
+        }
+      }
+    ];
+
 
   for (let i = 0; i < rows.length; i++) {
     let categories = rows[i].cells[0].innerText.split("/");
@@ -54,6 +76,72 @@ function saveToJson() {
 
     links.push(temp);
   }
+
+  document.getElementById('saveButton').addEventListener('click', async () => {
+    // Check if the File System Access API is supported
+    if ('showSaveFilePicker' in window) {
+      try {
+        // Show the save file dialog
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: 'default-filename.txt',
+          types: [
+            {
+              description: 'Text Files',
+              accept: {
+                'text/plain': ['.txt'],
+              },
+            },
+          ],
+          // You can specify a default directory, but note that this is browser-dependent
+          // and may not work in all cases or browsers.
+          startIn: 'documents' // or 'desktop', 'downloads'
+        });
+
+        // Create a writable stream
+        const writableStream = await fileHandle.createWritable();
+
+        // Write data to the file
+        await writableStream.write('Hello, world!');
+
+        // Close the writable stream
+        await writableStream.close();
+
+        console.log('File saved successfully.');
+      } catch (err) {
+        console.error('Error saving file:', err);
+      }
+    } else {
+      console.error('File System Access API is not supported in this browser.');
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   links.shift();
   var jsonData = JSON.stringify(links);

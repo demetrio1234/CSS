@@ -374,6 +374,35 @@ const saveToJson = function () {
       summary: "",
     };
 
+    if (window.location.pathname.split("/").pop() === "how-to-s.html")
+      links = [
+        {
+          categories: [],
+          href: "",
+          innerText: "",
+          description: "",
+          summary: ""
+        },
+      ];
+    else
+      links = [
+        {
+          insertionsDate: "",
+          insertionsTitle: "",
+          linkToInsertion: "",
+          position: [],
+          jobPercentage: [],
+          jobStartingDate: "",
+          companyName: "",
+          jobDescription: {
+            jobDescription: "",
+            jobAttendantResposibilities: [],
+            jobAttendantSkills: [],
+            employerBenefits: []
+          }
+        }
+      ];
+
     tempRow.categories = categories;
 
     for (let j = 1; j < 4; j++) {
